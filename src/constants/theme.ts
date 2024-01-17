@@ -71,7 +71,7 @@ const theme: ITheme = {
   //   otherBorderRadius: 30,
   //   navBarBorderRadius: 10,
   // },
-  deskContainerWidth: 1184,
+  deskContainerWidth: 1216,
   primaryGap: 20,
   transitionDurationAndFunc: '250ms cubic-bezier(0.4, 0, 0.2, 1)',
   spacing: (value = 1) => `${value * 4}px`,
