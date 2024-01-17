@@ -8,8 +8,10 @@ import {
   montserratRegular,
   montserratSemiBold,
 } from 'fonts';
+import { FC } from 'react';
+import 'react-toastify/dist/ReactToastify.css';
 
-const GlobalStyles = () => (
+const GlobalStyles: FC = () => (
   <Global
     styles={css`
       @font-face {

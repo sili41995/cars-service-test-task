@@ -1,4 +1,5 @@
 export interface ICar {
+  [key: string]: string | number | string[] | null;
   id: string;
   year: number;
   make: string;
@@ -25,14 +26,14 @@ export interface ICarsState {
   error: string | null;
 }
 
-export interface IFavoritesCars {
-  id: null;
+export interface IFavoritesCarsState {
+  id: string[] | null;
   items: null;
 }
 
 export interface IState {
   cars: ICarsState;
-  favoritesCars: IFavoritesCars;
+  favoritesCars: IFavoritesCarsState;
 }
 
 //other
@@ -48,4 +49,10 @@ export interface IFetchCarsProps extends IFetchCarsOptions {
 export interface IFetchCarProps {
   id: string;
   signal: AbortSignal;
+}
+
+export interface ICarInfo {
+  carImg: string;
+  carCharacteristics: string[];
+  otherCarCharacteristics: string[];
 }

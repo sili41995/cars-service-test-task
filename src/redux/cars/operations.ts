@@ -16,11 +16,12 @@ export const fetchCars = createAsyncThunk<
     }: { rejectWithValue: Function; signal: AbortSignal }
   ) => {
     try {
-      const contacts = await carsServiceApi.fetchCars({
+      const response = await carsServiceApi.fetchCars({
         ...fetchOptions,
         signal,
       });
-      return contacts;
+
+      return response;
     } catch (error) {
       if (error instanceof Error) {
         return rejectWithValue(error.message);

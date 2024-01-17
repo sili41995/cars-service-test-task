@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 import initialState from '../initialState';
-import { ICarsState } from 'types/types';
+import { IFavoritesCarsState } from 'types/types';
 
 const favoritesCarsSlice = createSlice({
   name: 'favoritesCars',
-  initialState: initialState.cars as ICarsState,
+  initialState: initialState.favoritesCars as IFavoritesCarsState,
   reducers: {},
 });
 export default favoritesCarsSlice.reducer;

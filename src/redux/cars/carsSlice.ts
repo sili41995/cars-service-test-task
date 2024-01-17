@@ -1,7 +1,7 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import initialState from '../initialState';
-import { ICarsState } from 'types/types';
 import { fetchCars } from './operations';
+import { ICarsState } from 'types/types';
 
 const carsSlice = createSlice({
   name: 'cars',

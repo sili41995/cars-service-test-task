@@ -3,12 +3,12 @@ import Toast from 'components/Toast';
 import PagePaths from 'constants/pagePaths';
 import { Route, Routes } from 'react-router-dom';
 import SharedLayout from 'components/SharedLayout';
-import { lazy } from 'react';
+import { FC, lazy } from 'react';
 
 const NotFoundPage = lazy(() => import('pages/NotFoundPage'));
 const CarsPage = lazy(() => import('pages/CarsPage'));
 
-const App = () => {
+const App: FC = () => {
   return (
     <>
       <Routes>

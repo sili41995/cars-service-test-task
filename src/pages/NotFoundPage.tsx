@@ -1,10 +1,9 @@
 import PagePaths from 'constants/pagePaths';
-import { useEffect } from 'react';
+import { FC, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
-import 'react-toastify/dist/ReactToastify.css';
 import { toasts } from 'utils';
 
-const NotFoundPage = () => {
+const NotFoundPage: FC = () => {
   useEffect(() => {
     toasts.errorToast('The request URL was not found');
   });
