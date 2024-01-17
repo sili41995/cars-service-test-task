@@ -3,9 +3,10 @@ import defaultCarImage from 'images/default-car-image.jpg';
 import getCarCharacteristics from './getCarCharacteristics';
 
 const getCarInfo = (car: ICar): ICarInfo => {
-  const { model, img, type, mileage, functionalities } = car;
+  const { make, model, img, type, mileage, functionalities } = car;
 
   const carImg = img ? img : defaultCarImage;
+  const carImgDesc = `${make} ${model}`;
   const carCharacteristics = getCarCharacteristics(car);
   const otherCarCharacteristics = [
     type,
@@ -16,6 +17,7 @@ const getCarInfo = (car: ICar): ICarInfo => {
 
   return {
     carImg,
+    carImgDesc,
     carCharacteristics,
     otherCarCharacteristics,
   };

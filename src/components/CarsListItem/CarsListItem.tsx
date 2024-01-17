@@ -6,14 +6,16 @@ import { Item } from './CarsListItem.styled';
 const CarsListItem: FC<IProps> = ({ car }) => {
   const { make, model, year, rentalPrice } = car;
 
-  const { carCharacteristics, carImg, otherCarCharacteristics } =
+  const { carCharacteristics, carImg, carImgDesc, otherCarCharacteristics } =
     getCarInfo(car);
 
   return (
     <Item>
-      <img src={carImg} alt={`${make} ${model}`} />
+      <img src={carImg} alt={carImgDesc} />
       <p>
-        {make} <span>{model}</span>, {year}
+        {`${make} `}
+        <span>{model}</span>
+        {`, ${year}`}
       </p>
       <p>{rentalPrice}</p>
       <p>{carCharacteristics}</p>
