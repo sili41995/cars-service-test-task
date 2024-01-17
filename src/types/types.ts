@@ -22,7 +22,7 @@ export interface ICar {
 export interface ICarsState {
   items: ICar[] | null;
   isLoading: boolean;
-  error: null;
+  error: string | null;
 }
 
 export interface IFavoritesCars {
@@ -36,3 +36,16 @@ export interface IState {
 }
 
 //other
+export interface IFetchCarsOptions {
+  page?: string;
+  limit?: string;
+}
+
+export interface IFetchCarsProps extends IFetchCarsOptions {
+  signal: AbortSignal;
+}
+
+export interface IFetchCarProps {
+  id: string;
+  signal: AbortSignal;
+}

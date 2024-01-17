@@ -6,6 +6,7 @@ import SharedLayout from 'components/SharedLayout';
 import { lazy } from 'react';
 
 const NotFoundPage = lazy(() => import('pages/NotFoundPage'));
+const CarsPage = lazy(() => import('pages/CarsPage'));
 
 const App = () => {
   return (
@@ -13,7 +14,7 @@ const App = () => {
       <Routes>
         <Route path={PagePaths.homePath} element={<SharedLayout />}>
           <Route index element={<div>HOME</div>} />
-          <Route path={PagePaths.catalogPath} element={<div>CATALOG</div>} />
+          <Route path={PagePaths.catalogPath} element={<CarsPage />} />
           <Route
             path={PagePaths.favoritesPath}
             element={<div>FAVORITES</div>}

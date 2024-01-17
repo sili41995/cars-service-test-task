@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import initialState from 'redux/initialState';
+import initialState from '../initialState';
 import { ICarsState } from 'types/types';
 
 const favoritesCarsSlice = createSlice({
@@ -7,5 +7,4 @@ const favoritesCarsSlice = createSlice({
   initialState: initialState.cars as ICarsState,
   reducers: {},
 });
-
 export default favoritesCarsSlice.reducer;
