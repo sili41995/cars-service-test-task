@@ -4,7 +4,7 @@ declare module '@emotion/react' {
 
 interface ITheme {
   colors: { [key: string]: string };
-  // shadows: { [key: string]: string };
+  shadows: { [key: string]: string };
   fontWeight: { [key: string]: number };
   // fontSize: { [key: string]: number };
   padding: { [key: string]: number };
@@ -21,6 +21,7 @@ const theme: ITheme = {
     primaryColor: '#3470FF',
     whiteColor: '#fff',
     accentColor: '#0B44CD',
+    characteristicsTextColor: 'rgba(18, 20, 23, 0.50)',
     //   secondaryColor: '#4d5ae5',
     //   otherColor: '#38b6ff',
     //   otherLinkColor: '#44de6f',
@@ -46,10 +47,10 @@ const theme: ITheme = {
     //   contactPrimaryTextColor: '#636363',
     //   contactSecondaryTextColor: '#696969',
   },
-  // shadows: {
-  //   primaryShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)',
-  //   secondaryShadow: '0px 4px 17px 0px rgba(0, 0, 0, 0.17)',
-  // },
+  shadows: {
+    primaryShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)',
+    //   secondaryShadow: '0px 4px 17px 0px rgba(0, 0, 0, 0.17)',
+  },
   fontWeight: {
     primaryFontWeight: 400,
     secondaryFontWeight: 500,

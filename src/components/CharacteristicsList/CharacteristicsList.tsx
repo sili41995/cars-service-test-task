@@ -1,15 +1,16 @@
 import { FC } from 'react';
 import { IProps } from './CharacteristicsList.types';
+import { Item, List, Text } from './CharacteristicsList.styled';
 
 const CharacteristicsList: FC<IProps> = ({ characteristics }) => {
   return (
-    <ul>
+    <List>
       {characteristics.map((characteristicsItem, index) => (
-        <li key={index}>
-          <p>{characteristicsItem}</p>
-        </li>
+        <Item key={index}>
+          <Text>{characteristicsItem}</Text>
+        </Item>
       ))}
-    </ul>
+    </List>
   );
 };
 

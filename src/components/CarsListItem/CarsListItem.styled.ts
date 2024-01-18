@@ -1,10 +1,13 @@
 import styled from '@emotion/styled';
+import { IStyledProps } from './CarsListItem.types';
 
 export const Card = styled.li`
-  flex-basis: calc((100% - 87px) / 4);
+  width: calc((100% - 87px) / 4);
+  overflow: hidden;
 `;
 
 export const ImgWrap = styled.div`
+  position: relative;
   height: 268px;
   border-radius: 14px;
   overflow: hidden;
@@ -16,10 +19,56 @@ export const ImgWrap = styled.div`
     #f3f3f2;
 `;
 
+export const TitleWrap = styled.div`
+  display: flex;
+  margin-top: 14px;
+`;
+
+export const Title = styled.p`
+  color: #121417;
+  font-family: Manrope;
+  font-size: 16px;
+  font-weight: ${({ theme }) => theme.fontWeight.secondaryFontWeight};
+  line-height: 1.5;
+`;
+
+export const Model = styled.span`
+  color: ${({ theme }) => theme.colors.primaryColor};
+`;
+
+export const Price = styled.p`
+  margin-right: 9px;
+  margin-left: auto;
+  color: #121417;
+  font-family: Manrope;
+  font-size: 16px;
+  font-weight: ${({ theme }) => theme.fontWeight.secondaryFontWeight};
+  line-height: 1.5;
+`;
+
 export const Image = styled.img``;
 
+export const FavBtn = styled.button<IStyledProps>`
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: block;
+  background-color: transparent;
+  padding: 0;
+  border: 0;
+  &:is(:hover, :focus) svg {
+    fill: ${({ theme, isFavCar }) =>
+      isFavCar ? theme.colors.whiteColor : theme.colors.primaryColor};
+  }
+  & svg {
+    display: block;
+    fill: ${({ theme, isFavCar }) =>
+      isFavCar ? theme.colors.primaryColor : theme.colors.whiteColor};
+    transition: fill ${({ theme }) => theme.transitionDurationAndFunc};
+  }
+`;
+
 export const LearnMoreBtn = styled.button`
-  display: inline-block;
   width: 100%;
   border-radius: 12px;
   border-color: transparent;
