@@ -1,7 +1,8 @@
 import { FC } from 'react';
 import { IProps } from './CarsListItem.types';
 import { getCarInfo } from 'utils';
-import { Item } from './CarsListItem.styled';
+import { Card, Image, ImgWrap, LearnMoreBtn } from './CarsListItem.styled';
+import CharacteristicsList from 'components/CharacteristicsList';
 
 const CarsListItem: FC<IProps> = ({ car }) => {
   const { make, model, year, rentalPrice } = car;
@@ -10,18 +11,20 @@ const CarsListItem: FC<IProps> = ({ car }) => {
     getCarInfo(car);
 
   return (
-    <Item>
-      <img src={carImg} alt={carImgDesc} />
+    <Card>
+      <ImgWrap>
+        <Image src={carImg} alt={carImgDesc} />
+      </ImgWrap>
       <p>
         {`${make} `}
         <span>{model}</span>
         {`, ${year}`}
       </p>
       <p>{rentalPrice}</p>
-      <p>{carCharacteristics}</p>
-      <p>{otherCarCharacteristics}</p>
-      <button type='button'>Learn more</button>
-    </Item>
+      <CharacteristicsList characteristics={carCharacteristics} />
+      <CharacteristicsList characteristics={otherCarCharacteristics} />
+      <LearnMoreBtn type='button'>Learn more</LearnMoreBtn>
+    </Card>
   );
 };
 

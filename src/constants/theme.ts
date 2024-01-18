@@ -3,9 +3,9 @@ declare module '@emotion/react' {
 }
 
 interface ITheme {
-  // colors: { [key: string]: string };
+  colors: { [key: string]: string };
   // shadows: { [key: string]: string };
-  // fontWeight: { [key: string]: number };
+  fontWeight: { [key: string]: number };
   // fontSize: { [key: string]: number };
   padding: { [key: string]: number };
   // borderRadius: { [key: string]: number };
@@ -17,43 +17,44 @@ interface ITheme {
 }
 
 const theme: ITheme = {
-  // colors: {
-  //   primaryColor: '#3456FF',
-  //   secondaryColor: '#4d5ae5',
-  //   otherColor: '#38b6ff',
-  //   otherLinkColor: '#44de6f',
-  //   primaryFontColor: '#000000',
-  //   secondaryFontColor: '#7c7c7c',
-  //   otherFontColor: '#555',
-  //   authPageBackgroundColor: 'rgba(46, 47, 66, 0.2)',
-  //   authFormBackgroundColor: '#fcfcfc',
-  //   btnBackgroundColor: 'rgba(217, 217, 217, 0.58)',
-  //   whiteColor: '#fff',
-  //   greyColor: '#808080',
-  //   lightgreyColor: '#eee',
-  //   redBtnColor: '#ff9192',
-  //   blueBtnColor: '#7fd1ff',
-  //   greenBtnColor: '#89f2a6',
-  //   yellowBtnColor: '#f2e189',
-  //   lightgreyBtnColor: '#d9d9d9',
-  //   redIconColor: '#d3232f',
-  //   blueIconColor: '#2681ed',
-  //   greenIconColor: '#00c938',
-  //   yellowIconColor: '#ffb422',
-  //   lightgreyIconColor: '#555555',
-  //   borderColor: 'rgba(137, 137, 137, 0.43)',
-  //   contactPrimaryTextColor: '#636363',
-  //   contactSecondaryTextColor: '#696969',
-  // },
+  colors: {
+    primaryColor: '#3470FF',
+    whiteColor: '#fff',
+    accentColor: '#0B44CD',
+    //   secondaryColor: '#4d5ae5',
+    //   otherColor: '#38b6ff',
+    //   otherLinkColor: '#44de6f',
+    //   primaryFontColor: '#000000',
+    //   secondaryFontColor: '#7c7c7c',
+    //   otherFontColor: '#555',
+    //   authPageBackgroundColor: 'rgba(46, 47, 66, 0.2)',
+    //   authFormBackgroundColor: '#fcfcfc',
+    //   btnBackgroundColor: 'rgba(217, 217, 217, 0.58)',
+    //   greyColor: '#808080',
+    //   lightgreyColor: '#eee',
+    //   redBtnColor: '#ff9192',
+    //   blueBtnColor: '#7fd1ff',
+    //   greenBtnColor: '#89f2a6',
+    //   yellowBtnColor: '#f2e189',
+    //   lightgreyBtnColor: '#d9d9d9',
+    //   redIconColor: '#d3232f',
+    //   blueIconColor: '#2681ed',
+    //   greenIconColor: '#00c938',
+    //   yellowIconColor: '#ffb422',
+    //   lightgreyIconColor: '#555555',
+    //   borderColor: 'rgba(137, 137, 137, 0.43)',
+    //   contactPrimaryTextColor: '#636363',
+    //   contactSecondaryTextColor: '#696969',
+  },
   // shadows: {
   //   primaryShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)',
   //   secondaryShadow: '0px 4px 17px 0px rgba(0, 0, 0, 0.17)',
   // },
-  // fontWeight: {
-  //   primaryFontWeight: 500,
-  //   secondaryFontWeight: 600,
-  //   otherFontWeight: 400,
-  // },
+  fontWeight: {
+    primaryFontWeight: 400,
+    secondaryFontWeight: 500,
+    otherFontWeight: 600,
+  },
   // fontSize: {
   //   titleFontSize: 35,
   //   subtitleFontSize: 25,
