@@ -10,10 +10,10 @@ interface ITheme {
   padding: { [key: string]: number };
   // borderRadius: { [key: string]: number };
   deskContainerWidth: number;
-  primaryGap: number;
+  // primaryGap: number;
   transitionDurationAndFunc: string;
   spacing: (value?: number) => string;
-  trimText: string;
+  // trimText: string;
 }
 
 const theme: ITheme = {
@@ -73,11 +73,11 @@ const theme: ITheme = {
   //   navBarBorderRadius: 10,
   // },
   deskContainerWidth: 1216,
-  primaryGap: 20,
+  // primaryGap: 20,
   transitionDurationAndFunc: '250ms cubic-bezier(0.4, 0, 0.2, 1)',
   spacing: (value = 1) => `${value * 4}px`,
-  trimText:
-    'word-wrap: break-word; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;',
+  // trimText:
+  //   'word-wrap: break-word; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;',
 };
 
 export default theme;
