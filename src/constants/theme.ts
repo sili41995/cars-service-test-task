@@ -75,7 +75,7 @@ const theme: ITheme = {
   // },
   deskContainerWidth: 1216,
   // primaryGap: 20,
-  transitionDurationAndFunc: '250ms cubic-bezier(0.4, 0, 0.2, 1)',
+  transitionDurationAndFunc: '2500ms cubic-bezier(0.4, 0, 0.2, 1)',
   spacing: (value = 1) => `${value * 4}px`,
   // trimText:
   //   'word-wrap: break-word; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;',
