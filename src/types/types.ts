@@ -26,6 +26,7 @@ export interface ICarsState {
   items: ICar[] | null;
   isLoading: boolean;
   error: string | null;
+  isLastPage: boolean;
 }
 
 export interface IFavoritesCarsState {
@@ -40,7 +41,7 @@ export interface IState {
 //other
 export interface IFetchCarsOptions {
   page?: string;
-  limit?: string;
+  limit: string;
 }
 
 export interface IFetchCarsProps extends IFetchCarsOptions {

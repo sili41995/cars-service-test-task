@@ -1,11 +1,12 @@
+import { FetchParams, Messages } from 'constants/index';
 import { ICar, IFetchCarProps, IFetchCarsProps } from 'types/types';
 
 class CarsServiceApi {
   private BASE_URL = 'https://648c40eb8620b8bae7ec8cc7.mockapi.io/cars';
 
   fetchCars({
-    page = '1',
-    limit = '12',
+    page = FetchParams.page,
+    limit,
     signal,
   }: IFetchCarsProps): Promise<ICar[]> {
     const options = {
@@ -21,7 +22,7 @@ class CarsServiceApi {
       options
     ).then((response) => {
       if (!response.ok) {
-        throw Error('Fetch adverts failed');
+        throw Error(Messages.fetchAdvertsError);
       }
 
       return response.json();
@@ -39,7 +40,7 @@ class CarsServiceApi {
 
     return fetch(`${this.BASE_URL}/adverts/${id}`, options).then((response) => {
       if (!response.ok) {
-        throw Error('Fetch advert failed');
+        throw Error(Messages.fetchAdvertByIdError);
       }
 
       return response.json();

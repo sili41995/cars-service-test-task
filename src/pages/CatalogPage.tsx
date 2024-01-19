@@ -2,16 +2,18 @@ import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { FC, useEffect } from 'react';
 import { fetchCars } from '../redux/cars/operations';
 import { toasts } from 'utils';
-import { selectCars } from '../redux/cars/selectors';
+import { selectCars, selectIsLastPage } from '../redux/cars/selectors';
 import CarsList from 'components/CarsList';
 import { useSearchParams } from 'react-router-dom';
-import { SearchParamsKeys } from 'constants/index';
+import { FetchParams, Messages, SearchParamsKeys } from 'constants/index';
 import LoadMoreBtn from 'components/LoadMoreBtn';
+import DefaultMessage from 'components/DefaultMessage';
 
 const CatalogPage: FC = () => {
   const [searchParams] = useSearchParams();
   const dispatch = useAppDispatch();
   const cars = useAppSelector(selectCars);
+  const isLastPage = useAppSelector(selectIsLastPage);
   const page = searchParams.get(SearchParamsKeys.page) ?? '1';
 
   useEffect(() => {
@@ -22,11 +24,11 @@ const CatalogPage: FC = () => {
       return;
     }
 
-    const promise = dispatch(fetchCars({ page }));
+    const promise = dispatch(fetchCars({ page, limit: FetchParams.limit }));
     promise
       .unwrap()
       .then(() => {
-        toasts.successToast('Adverts loaded successfully');
+        toasts.successToast(Messages.loadedSuccess);
       })
       .catch((error) => {
         toasts.errorToast(error);
@@ -37,13 +39,13 @@ const CatalogPage: FC = () => {
     };
   }, [dispatch, page]);
 
-  return (
-    cars && (
-      <>
-        <CarsList cars={cars} />
-        <LoadMoreBtn disabled={false} />
-      </>
-    )
+  return cars?.length ? (
+    <>
+      <CarsList cars={cars} />
+      <LoadMoreBtn disabled={isLastPage} />
+    </>
+  ) : (
+    <DefaultMessage message={Messages.emptyList} />
   );
 };
 

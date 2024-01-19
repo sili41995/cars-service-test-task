@@ -5,6 +5,7 @@ const initialState: IState = {
     items: null,
     isLoading: false,
     error: null,
+    isLastPage: false,
   },
   favoritesCars: {
     id: null,
