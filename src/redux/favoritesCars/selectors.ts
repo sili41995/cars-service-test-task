@@ -1,3 +1,3 @@
 import { IState } from 'types/types';
 
-export const selectFavoritesCars = (state: IState) => state.favoritesCars.id;
+export const selectFavoritesCarsId = (state: IState) => state.favoritesCars.id;

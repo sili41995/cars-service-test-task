@@ -5,7 +5,7 @@ import { toasts } from 'utils';
 import { selectCars } from '../redux/cars/selectors';
 import CarsList from 'components/CarsList';
 
-const CarsPage: FC = () => {
+const CatalogPage: FC = () => {
   const dispatch = useAppDispatch();
   const cars = useAppSelector(selectCars);
 
@@ -28,4 +28,4 @@ const CarsPage: FC = () => {
   return cars && <CarsList cars={cars} />;
 };
 
-export default CarsPage;
+export default CatalogPage;

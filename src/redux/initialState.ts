@@ -8,7 +8,6 @@ const initialState: IState = {
   },
   favoritesCars: {
     id: null,
-    items: null,
   },
 };
 

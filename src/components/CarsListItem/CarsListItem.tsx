@@ -17,12 +17,12 @@ import CharacteristicsList from 'components/CharacteristicsList';
 import { AriaLabels, IconSizes } from 'constants/index';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { changeFavList } from '../../redux/favoritesCars/favoritesCarsSlice';
-import { selectFavoritesCars } from '../../redux/favoritesCars/selectors';
+import { selectFavoritesCarsId } from '../../redux/favoritesCars/selectors';
 
 const CarsListItem: FC<IProps> = ({ car }) => {
   const { make, model, year, rentalPrice, id } = car;
   const dispatch = useAppDispatch();
-  const favoritesCars = useAppSelector(selectFavoritesCars);
+  const favoritesCars = useAppSelector(selectFavoritesCarsId);
   const isFavCar = favoritesCars?.includes(id);
   const favBtnIcon = isFavCar ? (
     <FaHeart size={IconSizes.primarySize} />
