@@ -14,7 +14,7 @@ const carsSlice = createSlice({
         ...state,
         isLoading: false,
         error: initialState.cars.error,
-        items: payload.length ? payload : [],
+        items: payload,
         isLastPage:
           !payload.length || payload.length < Number(FetchParams.limit),
       }))
