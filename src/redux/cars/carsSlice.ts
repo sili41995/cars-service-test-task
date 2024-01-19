@@ -2,7 +2,6 @@ import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import initialState from '../initialState';
 import { fetchCars } from './operations';
 import { ICarsState } from 'types/types';
-import { FetchParams } from 'constants/index';
 
 const carsSlice = createSlice({
   name: 'cars',
@@ -15,8 +14,6 @@ const carsSlice = createSlice({
         isLoading: false,
         error: initialState.cars.error,
         items: payload,
-        isLastPage:
-          !payload.length || payload.length < Number(FetchParams.limit),
       }))
       .addMatcher(isAnyOf(fetchCars.pending), (state) => ({
         ...state,

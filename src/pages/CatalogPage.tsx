@@ -2,7 +2,7 @@ import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { FC, useEffect } from 'react';
 import { fetchCars } from '../redux/cars/operations';
 import { toasts } from 'utils';
-import { selectCars, selectIsLastPage } from '../redux/cars/selectors';
+import { selectCars } from '../redux/cars/selectors';
 import CarsList from 'components/CarsList';
 import { useSearchParams } from 'react-router-dom';
 import { FetchParams, Messages, SearchParamsKeys } from 'constants/index';
@@ -13,7 +13,7 @@ const CatalogPage: FC = () => {
   const [searchParams] = useSearchParams();
   const dispatch = useAppDispatch();
   const cars = useAppSelector(selectCars);
-  const isLastPage = useAppSelector(selectIsLastPage);
+  const isLastPage = Number(cars?.length) < Number(FetchParams.limit);
   const page = searchParams.get(SearchParamsKeys.page) ?? '1';
 
   useEffect(() => {

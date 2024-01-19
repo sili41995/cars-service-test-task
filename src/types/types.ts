@@ -26,7 +26,6 @@ export interface ICarsState {
   items: ICar[] | null;
   isLoading: boolean;
   error: string | null;
-  isLastPage: boolean;
 }
 
 export interface IFavoritesCarsState {
