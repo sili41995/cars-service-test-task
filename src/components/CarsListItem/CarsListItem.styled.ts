@@ -2,9 +2,17 @@ import styled from '@emotion/styled';
 import { IStyledProps } from './CarsListItem.types';
 
 export const Card = styled.li`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing(2)};
+  justify-content: space-between;
   width: calc((100% - 87px) / 4);
   overflow: hidden;
 `;
+
+export const BasicInfoWrap = styled.div``;
+
+export const DetailedInfoWrap = styled.div``;
 
 export const ImgWrap = styled.div`
   position: relative;

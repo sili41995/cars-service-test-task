@@ -1,3 +1,5 @@
+import { SearchParamsKeys } from 'constants/index';
+
 export interface ICar {
   [key: string]: string | number | string[] | null;
   id: string;
@@ -55,4 +57,11 @@ export interface ICarInfo {
   carImgDesc: string;
   carCharacteristics: string[];
   otherCarCharacteristics: string[];
+}
+
+export interface IUpdateSearchParamsProps {
+  searchParams: URLSearchParams;
+  setSearchParams: (arg: URLSearchParams) => void;
+  key: SearchParamsKeys;
+  value: string;
 }

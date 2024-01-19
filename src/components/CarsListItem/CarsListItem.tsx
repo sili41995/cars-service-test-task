@@ -3,7 +3,9 @@ import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import { IProps } from './CarsListItem.types';
 import { getCarInfo, makeBlur } from 'utils';
 import {
+  BasicInfoWrap,
   Card,
+  DetailedInfoWrap,
   FavBtn,
   Image,
   ImgWrap,
@@ -40,28 +42,32 @@ const CarsListItem: FC<IProps> = ({ car }) => {
 
   return (
     <Card>
-      <ImgWrap>
-        <Image src={carImg} alt={carImgDesc} />
-        <FavBtn
-          type='button'
-          onClick={onFavBtnClick}
-          isFavCar={isFavCar}
-          aria-label={AriaLabels.favBtn}
-        >
-          {favBtnIcon}
-        </FavBtn>
-      </ImgWrap>
-      <TitleWrap>
-        <Title>
-          {`${make} `}
-          <Model>{model}</Model>
-          {`, ${year}`}
-        </Title>
-        <Price>{rentalPrice}</Price>
-      </TitleWrap>
-      <CharacteristicsList characteristics={carCharacteristics} />
-      <CharacteristicsList characteristics={otherCarCharacteristics} />
-      <LearnMoreBtn type='button'>Learn more</LearnMoreBtn>
+      <BasicInfoWrap>
+        <ImgWrap>
+          <Image src={carImg} alt={carImgDesc} />
+          <FavBtn
+            type='button'
+            onClick={onFavBtnClick}
+            isFavCar={isFavCar}
+            aria-label={AriaLabels.favBtn}
+          >
+            {favBtnIcon}
+          </FavBtn>
+        </ImgWrap>
+        <TitleWrap>
+          <Title>
+            {`${make} `}
+            <Model>{model}</Model>
+            {`, ${year}`}
+          </Title>
+          <Price>{rentalPrice}</Price>
+        </TitleWrap>
+      </BasicInfoWrap>
+      <DetailedInfoWrap>
+        <CharacteristicsList characteristics={carCharacteristics} />
+        <CharacteristicsList characteristics={otherCarCharacteristics} />
+        <LearnMoreBtn type='button'>Learn more</LearnMoreBtn>
+      </DetailedInfoWrap>
     </Card>
   );
 };

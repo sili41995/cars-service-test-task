@@ -3,7 +3,6 @@ import styled from '@emotion/styled';
 export const List = styled.ul`
   display: flex;
   gap: 5px;
-  margin-top: ${({ theme }) => theme.spacing(2)};
   &:not(:first-of-type) {
     margin-top: ${({ theme }) => theme.spacing()};
   }
