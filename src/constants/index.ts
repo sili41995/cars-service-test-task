@@ -7,3 +7,4 @@ export { default as FetchStatuses } from './fetchStatuses';
 export { default as SearchParamsKeys } from './searchParamsKeys';
 export { default as FetchParams } from './fetchParams';
 export { default as Messages } from './messages';
+export { default as GeneralParams } from './generalParams';

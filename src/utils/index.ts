@@ -5,3 +5,8 @@ export { default as getIsPremiumCar } from './getIsPremiumCar';
 export { default as getCarInfo } from './getCarInfo';
 export { default as getAllCarFunctionalities } from './getAllCarFunctionalities';
 export { default as makeBlur } from './makeBlur';
+export { default as getDetailsCarCharacteristics } from './getDetailsCarCharacteristics';
+export { default as getCarEngineCharacteristics } from './getCarEngineCharacteristics';
+export { default as getRentalConditionsCar } from './getRentalConditionsCar';
+export { default as getIsNumber } from './getIsNumber';
+export { default as addDelimiter } from './addDelimiter';

@@ -10,6 +10,9 @@ export const Backdrop = styled.div`
   justify-content: center;
   align-items: center;
   background-color: ${({ theme }) => theme.colors.backdropColor};
+  @media screen and (max-height: 500px) {
+    align-items: flex-start;
+  }
 `;
 
 export const Container = styled.div`

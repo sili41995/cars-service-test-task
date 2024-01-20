@@ -17,6 +17,7 @@ export const DetailedInfoWrap = styled.div``;
 export const ImgWrap = styled.div`
   position: relative;
   height: 268px;
+  margin-bottom: 14px;
   border-radius: 14px;
   overflow: hidden;
   background: linear-gradient(
@@ -29,7 +30,6 @@ export const ImgWrap = styled.div`
 
 export const TitleWrap = styled.div`
   display: flex;
-  margin-top: 14px;
 `;
 
 export const Price = styled.p`

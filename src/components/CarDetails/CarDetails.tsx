@@ -4,31 +4,41 @@ import CarTitle from 'components/CarTitle';
 import { theme } from 'constants/index';
 import FunctionalitiesList from 'components/FunctionalitiesList';
 import { getCarInfo } from 'utils';
+import {
+  Container,
+  Description,
+  Image,
+  ImgWrap,
+  Title,
+} from './CarDetails.styled';
 import RentalConditions from 'components/RentalConditions';
 
 const CarDetails: FC<IProps> = ({ car }) => {
-  const { make, model, year } = car;
-  const { functionalities } = getCarInfo(car);
+  const { make, model, year, description, accessories, functionalities } = car;
+  const { carImg, carImgDesc, detailsCharacteristics, rental } =
+    getCarInfo(car);
 
   return (
     <>
-      <div>
-        <img src='' alt='' />
-      </div>
+      <ImgWrap>
+        <Image src={carImg} alt={carImgDesc} />
+      </ImgWrap>
       <CarTitle
         fontSize={theme.fontSize.secondaryFontSize}
         make={make}
         model={model}
         year={year}
       />
-      <div>
-        <p>Accessories and functionalities:</p>
-        <FunctionalitiesList functionalities={functionalities} />
-      </div>
-      <div>
-        <p>Rental Conditions:</p>
-        <RentalConditions />
-      </div>
+      <FunctionalitiesList functionalities={detailsCharacteristics} />
+      <Description>{description}</Description>
+      <Container>
+        <Title>Accessories and functionalities:</Title>
+        <FunctionalitiesList functionalities={[accessories, functionalities]} />
+      </Container>
+      <Container>
+        <Title>Rental Conditions:</Title>
+        <RentalConditions rentalConditions={rental} />
+      </Container>
     </>
   );
 };

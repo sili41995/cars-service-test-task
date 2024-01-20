@@ -16,8 +16,10 @@ const ModalWin: FC<IProps> = ({ setModalWinState, children }) => {
     };
 
     window.addEventListener('keydown', hideModalWin);
+    document.body.style.overflow = 'hidden';
 
     return () => {
+      document.body.style.overflow = '';
       window.removeEventListener('keydown', hideModalWin);
     };
   }, [setModalWinState]);

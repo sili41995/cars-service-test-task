@@ -57,6 +57,8 @@ export interface ICarInfo {
   carImg: string;
   carImgDesc: string;
   functionalities: string[][];
+  detailsCharacteristics: string[][];
+  rental: string[];
 }
 
 export interface IUpdateSearchParamsProps {
