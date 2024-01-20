@@ -1,4 +1,4 @@
-import { FC, MouseEvent } from 'react';
+import { FC, MouseEvent, useState } from 'react';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import { IProps } from './CarsListItem.types';
 import { getCarInfo, makeBlur } from 'utils';
@@ -20,8 +20,10 @@ import { AriaLabels, IconSizes } from 'constants/index';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { changeFavList } from '../../redux/favoritesCars/favoritesCarsSlice';
 import { selectFavoritesCarsId } from '../../redux/favoritesCars/selectors';
+import ModalWin from 'components/Modal/ModalWin';
 
 const CarsListItem: FC<IProps> = ({ car }) => {
+  const [showModal, setShowModal] = useState<boolean>(false);
   const { make, model, year, rentalPrice, id } = car;
   const dispatch = useAppDispatch();
   const favoritesCars = useAppSelector(selectFavoritesCarsId);
@@ -40,35 +42,49 @@ const CarsListItem: FC<IProps> = ({ car }) => {
     makeBlur(e.currentTarget);
   };
 
+  const toggleShowModal = () => {
+    setShowModal((prevState) => !prevState);
+  };
+
+  const onLearnMoreBtnClick = (e: MouseEvent<HTMLButtonElement>) => {
+    toggleShowModal();
+    makeBlur(e.currentTarget);
+  };
+
   return (
-    <Card>
-      <BasicInfoWrap>
-        <ImgWrap>
-          <Image src={carImg} alt={carImgDesc} />
-          <FavBtn
-            type='button'
-            onClick={onFavBtnClick}
-            isFavCar={isFavCar}
-            aria-label={AriaLabels.favBtn}
-          >
-            {favBtnIcon}
-          </FavBtn>
-        </ImgWrap>
-        <TitleWrap>
-          <Title>
-            {`${make} `}
-            <Model>{model}</Model>
-            {`, ${year}`}
-          </Title>
-          <Price>{rentalPrice}</Price>
-        </TitleWrap>
-      </BasicInfoWrap>
-      <DetailedInfoWrap>
-        <CharacteristicsList characteristics={carCharacteristics} />
-        <CharacteristicsList characteristics={otherCarCharacteristics} />
-        <LearnMoreBtn type='button'>Learn more</LearnMoreBtn>
-      </DetailedInfoWrap>
-    </Card>
+    <>
+      <Card>
+        <BasicInfoWrap>
+          <ImgWrap>
+            <Image src={carImg} alt={carImgDesc} />
+            <FavBtn
+              type='button'
+              onClick={onFavBtnClick}
+              isFavCar={isFavCar}
+              aria-label={AriaLabels.favBtn}
+            >
+              {favBtnIcon}
+            </FavBtn>
+          </ImgWrap>
+          <TitleWrap>
+            <Title>
+              {`${make} `}
+              <Model>{model}</Model>
+              {`, ${year}`}
+            </Title>
+            <Price>{rentalPrice}</Price>
+          </TitleWrap>
+        </BasicInfoWrap>
+        <DetailedInfoWrap>
+          <CharacteristicsList characteristics={carCharacteristics} />
+          <CharacteristicsList characteristics={otherCarCharacteristics} />
+          <LearnMoreBtn type='button' onClick={onLearnMoreBtnClick}>
+            Learn more
+          </LearnMoreBtn>
+        </DetailedInfoWrap>
+      </Card>
+      {showModal && <ModalWin setModalWinState={toggleShowModal} data={car} />}
+    </>
   );
 };
 

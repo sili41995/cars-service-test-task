@@ -22,6 +22,7 @@ const theme: ITheme = {
     whiteColor: '#fff',
     accentColor: '#0B44CD',
     characteristicsTextColor: 'rgba(18, 20, 23, 0.50)',
+    backdropColor: 'rgba(18, 20, 23, 0.50)',
     //   secondaryColor: '#4d5ae5',
     //   otherColor: '#38b6ff',
     //   otherLinkColor: '#44de6f',
