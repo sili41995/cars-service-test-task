@@ -55,8 +55,7 @@ export interface IFetchCarProps {
 export interface ICarInfo {
   carImg: string;
   carImgDesc: string;
-  carCharacteristics: string[];
-  otherCarCharacteristics: string[];
+  functionalities: string[][];
 }
 
 export interface IUpdateSearchParamsProps {

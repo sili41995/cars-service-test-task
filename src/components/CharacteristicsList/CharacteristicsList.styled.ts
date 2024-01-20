@@ -3,9 +3,6 @@ import styled from '@emotion/styled';
 export const List = styled.ul`
   display: flex;
   gap: 5px;
-  &:not(:first-of-type) {
-    margin-top: ${({ theme }) => theme.spacing()};
-  }
 `;
 
 export const Item = styled.li`

@@ -5,7 +5,7 @@ import { createPortal } from 'react-dom';
 import { CgClose } from 'react-icons/cg';
 import { AriaLabels, IconSizes } from 'constants/index';
 
-const ModalWin: FC<IProps> = ({ data, setModalWinState }) => {
+const ModalWin: FC<IProps> = ({ setModalWinState, children }) => {
   const modalRoot = document.querySelector('#modal-root');
 
   useEffect(() => {
@@ -36,6 +36,7 @@ const ModalWin: FC<IProps> = ({ data, setModalWinState }) => {
           <CloseBtn aria-label={AriaLabels.closeBtn} onClick={setModalWinState}>
             <CgClose size={IconSizes.secondarySize} />
           </CloseBtn>
+          {children}
         </Container>
       </Backdrop>,
       modalRoot

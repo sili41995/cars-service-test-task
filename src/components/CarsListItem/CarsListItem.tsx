@@ -10,21 +10,21 @@ import {
   Image,
   ImgWrap,
   LearnMoreBtn,
-  Model,
   Price,
-  Title,
   TitleWrap,
 } from './CarsListItem.styled';
-import CharacteristicsList from 'components/CharacteristicsList';
-import { AriaLabels, IconSizes } from 'constants/index';
+import { AriaLabels, IconSizes, theme } from 'constants/index';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { changeFavList } from '../../redux/favoritesCars/favoritesCarsSlice';
 import { selectFavoritesCarsId } from '../../redux/favoritesCars/selectors';
 import ModalWin from 'components/Modal/ModalWin';
+import CarDetails from 'components/CarDetails';
+import CarTitle from 'components/CarTitle';
+import FunctionalitiesList from 'components/FunctionalitiesList';
 
 const CarsListItem: FC<IProps> = ({ car }) => {
   const [showModal, setShowModal] = useState<boolean>(false);
-  const { make, model, year, rentalPrice, id } = car;
+  const { rentalPrice, id, make, model, year } = car;
   const dispatch = useAppDispatch();
   const favoritesCars = useAppSelector(selectFavoritesCarsId);
   const isFavCar = favoritesCars?.includes(id);
@@ -34,8 +34,7 @@ const CarsListItem: FC<IProps> = ({ car }) => {
     <FaRegHeart size={IconSizes.primarySize} />
   );
 
-  const { carCharacteristics, carImg, carImgDesc, otherCarCharacteristics } =
-    getCarInfo(car);
+  const { carImg, carImgDesc, functionalities } = getCarInfo(car);
 
   const onFavBtnClick = (e: MouseEvent<HTMLButtonElement>) => {
     dispatch(changeFavList(id));
@@ -67,23 +66,27 @@ const CarsListItem: FC<IProps> = ({ car }) => {
             </FavBtn>
           </ImgWrap>
           <TitleWrap>
-            <Title>
-              {`${make} `}
-              <Model>{model}</Model>
-              {`, ${year}`}
-            </Title>
+            <CarTitle
+              fontSize={theme.fontSize.primaryFontSize}
+              make={make}
+              model={model}
+              year={year}
+            />
             <Price>{rentalPrice}</Price>
           </TitleWrap>
         </BasicInfoWrap>
         <DetailedInfoWrap>
-          <CharacteristicsList characteristics={carCharacteristics} />
-          <CharacteristicsList characteristics={otherCarCharacteristics} />
+          <FunctionalitiesList functionalities={functionalities} />
           <LearnMoreBtn type='button' onClick={onLearnMoreBtnClick}>
             Learn more
           </LearnMoreBtn>
         </DetailedInfoWrap>
       </Card>
-      {showModal && <ModalWin setModalWinState={toggleShowModal} data={car} />}
+      {showModal && (
+        <ModalWin setModalWinState={toggleShowModal}>
+          <CarDetails car={car} />
+        </ModalWin>
+      )}
     </>
   );
 };

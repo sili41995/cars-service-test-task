@@ -13,6 +13,7 @@ export const Backdrop = styled.div`
 `;
 
 export const Container = styled.div`
+  width: 541px;
   position: relative;
   border-radius: 24px;
   background-color: ${({ theme }) => theme.colors.whiteColor};

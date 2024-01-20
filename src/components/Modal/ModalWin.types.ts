@@ -1,4 +1,6 @@
+import { ReactNode } from 'react';
+
 export interface IProps {
-  data: object;
   setModalWinState: () => void;
+  children: ReactNode;
 }

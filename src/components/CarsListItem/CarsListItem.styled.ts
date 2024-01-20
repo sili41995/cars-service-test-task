@@ -32,18 +32,6 @@ export const TitleWrap = styled.div`
   margin-top: 14px;
 `;
 
-export const Title = styled.p`
-  color: #121417;
-  font-family: Manrope;
-  font-size: 16px;
-  font-weight: ${({ theme }) => theme.fontWeight.secondaryFontWeight};
-  line-height: 1.5;
-`;
-
-export const Model = styled.span`
-  color: ${({ theme }) => theme.colors.primaryColor};
-`;
-
 export const Price = styled.p`
   margin-right: 9px;
   margin-left: auto;

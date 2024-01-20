@@ -20,8 +20,7 @@ const getCarInfo = (car: ICar): ICarInfo => {
   return {
     carImg,
     carImgDesc,
-    carCharacteristics,
-    otherCarCharacteristics,
+    functionalities: [carCharacteristics, otherCarCharacteristics],
   };
 };
 

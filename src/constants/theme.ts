@@ -6,7 +6,7 @@ interface ITheme {
   colors: { [key: string]: string };
   shadows: { [key: string]: string };
   fontWeight: { [key: string]: number };
-  // fontSize: { [key: string]: number };
+  fontSize: { [key: string]: number };
   padding: { [key: string]: number };
   // borderRadius: { [key: string]: number };
   deskContainerWidth: number;
@@ -57,13 +57,13 @@ const theme: ITheme = {
     secondaryFontWeight: 500,
     otherFontWeight: 600,
   },
-  // fontSize: {
-  //   titleFontSize: 35,
-  //   subtitleFontSize: 25,
-  //   primaryFontSize: 16,
-  //   secondaryFontSize: 18,
-  //   otherFontSize: 20,
-  // },
+  fontSize: {
+    //   titleFontSize: 35,
+    //   subtitleFontSize: 25,
+    primaryFontSize: 16,
+    secondaryFontSize: 18,
+    //   otherFontSize: 20,
+  },
   padding: {
     containerPadding: 16,
     sectionPadding: 150,
