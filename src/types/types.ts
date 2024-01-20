@@ -1,4 +1,5 @@
 import { SearchParamsKeys } from 'constants/index';
+import { SetURLSearchParams } from 'react-router-dom';
 
 export interface ICar {
   [key: string]: string | number | string[] | null;
@@ -59,8 +60,12 @@ export interface ICarInfo {
 }
 
 export interface IUpdateSearchParamsProps {
-  searchParams: URLSearchParams;
-  setSearchParams: (arg: URLSearchParams) => void;
   key: SearchParamsKeys;
   value: string;
+}
+
+export interface IUseSetSearchParams {
+  updateSearchParams: ({ key, value }: IUpdateSearchParamsProps) => void;
+  searchParams: URLSearchParams;
+  setSearchParams: SetURLSearchParams;
 }
