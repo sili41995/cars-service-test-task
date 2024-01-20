@@ -21,13 +21,14 @@ const RentalConditions: FC<IProps> = ({ rentalConditions }) => {
         let formattedItem = splitItem.join(GeneralParams.emptyStr);
         const isNumber = getIsNumber(items);
         const isLongerNumber =
-          !Number.isNaN(Number(formattedItem)) && formattedItem.length > 3;
+          !Number.isNaN(Number(formattedItem)) &&
+          formattedItem.length > GeneralParams.maxNumLength;
 
         if (isLongerNumber) {
           formattedItem = addDelimiter({
             str: formattedItem,
             delimiter: ',',
-            position: 3,
+            position: Number(GeneralParams.maxNumLength),
           });
         }
 
