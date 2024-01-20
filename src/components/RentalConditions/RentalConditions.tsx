@@ -21,7 +21,7 @@ const RentalConditions: FC<IProps> = ({ rentalConditions }) => {
         let formattedItem = splitItem.join(GeneralParams.emptyStr);
         const isNumber = getIsNumber(items);
         const isLongerNumber =
-          !Number.isNaN(formattedItem) && formattedItem.length > 3;
+          !Number.isNaN(Number(formattedItem)) && formattedItem.length > 3;
 
         if (isLongerNumber) {
           formattedItem = addDelimiter({
