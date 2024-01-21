@@ -8,7 +8,7 @@ interface ITheme {
   fontWeight: { [key: string]: number };
   fontSize: { [key: string]: number };
   padding: { [key: string]: number };
-  // borderRadius: { [key: string]: number };
+  borderRadius: { [key: string]: number };
   deskContainerWidth: number;
   // primaryGap: number;
   transitionDurationAndFunc: string;
@@ -24,7 +24,7 @@ const theme: ITheme = {
     characteristicsTextColor: 'rgba(18, 20, 23, 0.50)',
     backdropColor: 'rgba(18, 20, 23, 0.50)',
     //   secondaryColor: '#4d5ae5',
-    //   otherColor: '#38b6ff',
+    otherColor: '#38b6ff',
     //   otherLinkColor: '#44de6f',
     //   primaryFontColor: '#000000',
     //   secondaryFontColor: '#7c7c7c',
@@ -68,12 +68,12 @@ const theme: ITheme = {
     containerPadding: 16,
     sectionPadding: 150,
   },
-  // borderRadius: {
-  //   primaryBorderRadius: 4,
-  //   secondaryBorderRadius: 8,
-  //   otherBorderRadius: 30,
-  //   navBarBorderRadius: 10,
-  // },
+  borderRadius: {
+    primaryBorderRadius: 4,
+    //   secondaryBorderRadius: 8,
+    //   otherBorderRadius: 30,
+    //   navBarBorderRadius: 10,
+  },
   deskContainerWidth: 1216,
   // primaryGap: 20,
   transitionDurationAndFunc: '250ms cubic-bezier(0.4, 0, 0.2, 1)',

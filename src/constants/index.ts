@@ -8,3 +8,4 @@ export { default as SearchParamsKeys } from './searchParamsKeys';
 export { default as FetchParams } from './fetchParams';
 export { default as Messages } from './messages';
 export { default as GeneralParams } from './generalParams';
+export { default as navLinks } from './navLinks';

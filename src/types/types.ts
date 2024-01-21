@@ -71,3 +71,10 @@ export interface IUseSetSearchParams {
   searchParams: URLSearchParams;
   setSearchParams: SetURLSearchParams;
 }
+
+export interface INavLink {
+  href: string;
+  title: string;
+}
+
+export type NavLinks = Readonly<INavLink[]>;
