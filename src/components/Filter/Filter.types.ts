@@ -1,3 +1,4 @@
 export interface IStyledProps {
-  inputName: string;
+  inputName?: string;
+  showBrandsList?: boolean;
 }

@@ -12,3 +12,4 @@ export { default as getIsNumber } from './getIsNumber';
 export { default as addDelimiter } from './addDelimiter';
 export { default as filterCarsByBrand } from './filterCarsByBrand';
 export { default as filterCarsByPrice } from './filterCarsByPrice';
+export { default as firstSymbolToUpperCase } from './firstSymbolToUpperCase';

@@ -11,6 +11,7 @@ export const Form = styled.form`
 `;
 
 export const Label = styled.label`
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing(2)};
@@ -30,15 +31,18 @@ export const InputWrap = styled.div`
 
 export const Input = styled.input`
   height: 48px;
+  outline: none;
   border-radius: 14px;
   background-color: #f7f7fb;
   padding: 14px;
-  border: none;
+  border: 3px solid;
+  border-color: transparent;
   color: #121417;
   font-family: Manrope;
   font-size: 18px;
   font-weight: ${({ theme }) => theme.fontWeight.secondaryFontWeight};
   line-height: 1.11;
+  transition: border-color ${({ theme }) => theme.transitionDurationAndFunc};
   &[name=${SearchParamsKeys.brand}] {
     width: 224px;
     padding-left: 18px;
@@ -53,8 +57,8 @@ export const Input = styled.input`
   &::placeholder {
     color: currentColor;
   }
-  &:is(:hover, :focus) {
-    outline: none;
+  &:not(:disabled):is(:hover, :focus) {
+    border-color: ${({ theme }) => theme.colors.primaryColor};
   }
 `;
 
@@ -82,4 +86,29 @@ export const Button = styled.button`
   font-size: 14px;
   font-weight: ${({ theme }) => theme.fontWeight.otherFontWeight};
   line-height: 1.43;
+  transition: background-color ${({ theme }) => theme.transitionDurationAndFunc};
+  &:is(:hover, :focus) {
+    background-color: ${({ theme }) => theme.colors.accentColor};
+  }
+`;
+
+export const ToggleMenuBtn = styled.button<IStyledProps>`
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  transform-origin: center;
+  transform: translateY(-50%)
+    ${({ showBrandsList }) => showBrandsList && 'rotate(180deg)'};
+  transition: transform ${({ theme }) => theme.transitionDurationAndFunc};
+  &:is(:hover, :focus) svg {
+    color: ${({ theme }) => theme.colors.primaryColor};
+  }
+  & svg {
+    display: block;
+    color: #121417;
+    transition: color ${({ theme }) => theme.transitionDurationAndFunc};
+  }
 `;
