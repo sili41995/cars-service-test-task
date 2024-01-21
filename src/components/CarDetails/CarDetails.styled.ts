@@ -40,3 +40,17 @@ export const Title = styled.p`
   font-weight: ${({ theme }) => theme.fontWeight.secondaryFontWeight};
   line-height: 1.43;
 `;
+
+export const Link = styled.a`
+  display: inline-block;
+  min-width: 168px;
+  border-radius: 12px;
+  padding: ${({ theme }) => theme.spacing(3)};
+  background-color: ${({ theme }) => theme.colors.primaryColor};
+  text-align: center;
+  color: ${({ theme }) => theme.colors.whiteColor};
+  font-family: Manrope;
+  font-size: 14px;
+  font-weight: ${({ theme }) => theme.fontWeight.otherFontWeight};
+  line-height: 1.43;
+`;

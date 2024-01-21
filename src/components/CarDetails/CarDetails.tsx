@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { IProps } from './CarDetails.types';
 import CarTitle from 'components/CarTitle';
-import { theme } from 'constants/index';
+import { GeneralParams, theme } from 'constants/index';
 import FunctionalitiesList from 'components/FunctionalitiesList';
 import { getCarInfo } from 'utils';
 import {
@@ -9,6 +9,7 @@ import {
   Description,
   Image,
   ImgWrap,
+  Link,
   Title,
 } from './CarDetails.styled';
 import RentalConditions from 'components/RentalConditions';
@@ -39,6 +40,7 @@ const CarDetails: FC<IProps> = ({ car }) => {
         <Title>Rental Conditions:</Title>
         <RentalConditions rentalConditions={rental} />
       </Container>
+      <Link href={`tel:${GeneralParams.companyPhone}`}>Rental car</Link>
     </>
   );
 };
