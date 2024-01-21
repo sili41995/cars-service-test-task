@@ -62,7 +62,7 @@ export interface ICarInfo {
 }
 
 export interface IUpdateSearchParamsProps {
-  key: SearchParamsKeys;
+  key: string;
   value: string;
 }
 
@@ -78,3 +78,13 @@ export interface INavLink {
 }
 
 export type NavLinks = Readonly<INavLink[]>;
+
+export interface IFilters {
+  brand: string;
+  price: string;
+}
+
+export interface IFilteredCarsProps {
+  cars: ICar[];
+  filter: string;
+}

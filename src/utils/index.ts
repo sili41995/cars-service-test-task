@@ -10,3 +10,5 @@ export { default as getCarEngineCharacteristics } from './getCarEngineCharacteri
 export { default as getRentalConditionsCar } from './getRentalConditionsCar';
 export { default as getIsNumber } from './getIsNumber';
 export { default as addDelimiter } from './addDelimiter';
+export { default as filterCarsByBrand } from './filterCarsByBrand';
+export { default as filterCarsByPrice } from './filterCarsByPrice';
