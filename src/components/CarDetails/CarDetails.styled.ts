@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 
 export const ImgWrap = styled.div`
   height: 248px;
-
   border-radius: 14px;
   overflow: hidden;
   background-color: #f3f3f2;
@@ -45,6 +44,7 @@ export const Link = styled.a`
   display: inline-block;
   min-width: 168px;
   border-radius: 12px;
+  margin-top: ${({ theme }) => theme.spacing(6)};
   padding: ${({ theme }) => theme.spacing(3)};
   background-color: ${({ theme }) => theme.colors.primaryColor};
   text-align: center;

@@ -10,7 +10,8 @@ export const Backdrop = styled.div`
   justify-content: center;
   align-items: center;
   background-color: ${({ theme }) => theme.colors.backdropColor};
-  @media screen and (max-height: 500px) {
+  overflow-y: scroll;
+  @media screen and (max-height: 752px) {
     align-items: flex-start;
   }
 `;
