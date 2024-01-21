@@ -16,7 +16,7 @@ const getPriceList = ({ cars, step }: IGetPriceListProps): string[] | null => {
   let price = 0;
 
   while (price <= maxPrice) {
-    if (price > minPrice) {
+    if (price >= minPrice) {
       priceList.push(String(price));
     }
 

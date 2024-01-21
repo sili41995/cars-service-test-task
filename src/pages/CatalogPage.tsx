@@ -60,13 +60,11 @@ const CatalogPage: FC = () => {
     <>
       <Filter />
       {filteredCars?.length ? (
-        <>
-          <CarsList cars={filteredCars} />
-          {!isLastPage && <LoadMoreBtn disabled={isLastPage} />}
-        </>
+        <CarsList cars={filteredCars} />
       ) : (
         <DefaultMessage message={Messages.emptyList} />
       )}
+      {!isLastPage && <LoadMoreBtn disabled={isLastPage} />}
     </>
   );
 };
