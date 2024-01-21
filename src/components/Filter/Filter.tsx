@@ -1,7 +1,7 @@
-import { IconSizes, SearchParamsKeys } from 'constants/index';
+import { GeneralParams, IconSizes, SearchParamsKeys } from 'constants/index';
 import useSetSearchParams from 'hooks/useSetSearchParams';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { IFilters } from 'types/types';
+import { IFilters, IOnToggleMenuBtnClickProps } from 'types/types';
 import {
   Button,
   Form,
@@ -14,29 +14,59 @@ import {
 } from './Filter.styled';
 import { MouseEvent, useState } from 'react';
 import { FaChevronDown } from 'react-icons/fa';
-import { firstSymbolToUpperCase, makeBlur } from 'utils';
+import {
+  firstSymbolToUpperCase,
+  getPriceList,
+  getValidPrice,
+  makeBlur,
+} from 'utils';
 import brands from 'constants/makes.json';
 import FiltersList from 'components/FiltersList/FiltersList';
+import { useAppSelector } from 'hooks/redux';
+import { selectCars } from '../../redux/cars/selectors';
 
 const Filter = () => {
   const [showBrandsList, setShowBrandsList] = useState<boolean>(false);
+  const [showPricesList, setShowPricesList] = useState<boolean>(false);
   const { searchParams, updateSearchParams } = useSetSearchParams();
+  const cars = useAppSelector(selectCars);
   const brand = searchParams.get(SearchParamsKeys.brand) ?? '';
   const price = searchParams.get(SearchParamsKeys.price) ?? '';
   const { register, handleSubmit, setValue, watch } = useForm<IFilters>();
   const brandInputValue = watch(SearchParamsKeys.brand);
+  const priceInputValue = watch(SearchParamsKeys.price) ?? '';
   const brandDefaultValue = firstSymbolToUpperCase(brand);
+  const priceList = getPriceList({
+    cars,
+    step: Number(GeneralParams.priceStep),
+  });
 
   const onSubmit: SubmitHandler<IFilters> = (data) => {
+    if (data.price) {
+      const validPrice = getValidPrice(data.price);
+      data.price = validPrice;
+    }
+
     Object.entries(data).forEach(([key, value]: string[]) => {
       if (!value) return;
 
       updateSearchParams({ key, value: value.toLowerCase() });
+      setShowBrandsList(false);
+      setShowPricesList(false);
     });
   };
 
-  const onToggleMenuBtnClick = (e: MouseEvent<HTMLButtonElement>) => {
-    setShowBrandsList((prevState) => !prevState);
+  const onToggleMenuBtnClick = ({
+    e,
+    name,
+  }: IOnToggleMenuBtnClickProps): void => {
+    if (name === SearchParamsKeys.brand) {
+      setShowBrandsList((prevState) => !prevState);
+    }
+
+    if (name === SearchParamsKeys.price) {
+      setShowPricesList((prevState) => !prevState);
+    }
     makeBlur(e.currentTarget);
   };
 
@@ -45,6 +75,13 @@ const Filter = () => {
     const inputName = SearchParamsKeys.brand;
     setValue(inputName, value);
     setShowBrandsList(false);
+  };
+
+  const onPriceClick = (e: MouseEvent<HTMLInputElement>) => {
+    const value = `${e.currentTarget.value}${GeneralParams.dollar}`;
+    const inputName = SearchParamsKeys.price;
+    setValue(inputName, value);
+    setShowPricesList(false);
   };
 
   const onSubmitFormBtnClick = (e: MouseEvent<HTMLButtonElement>) => {
@@ -64,8 +101,10 @@ const Filter = () => {
           />
           <ToggleMenuBtn
             type='button'
-            onClick={onToggleMenuBtnClick}
-            showBrandsList={showBrandsList}
+            onClick={(e) => {
+              onToggleMenuBtnClick({ e, name: SearchParamsKeys.brand });
+            }}
+            showFiltersList={showBrandsList}
           >
             <FaChevronDown size={IconSizes.otherSize} />
           </ToggleMenuBtn>
@@ -90,7 +129,24 @@ const Filter = () => {
             defaultValue={price}
             disabled
           />
+          <ToggleMenuBtn
+            type='button'
+            onClick={(e) => {
+              onToggleMenuBtnClick({ e, name: SearchParamsKeys.price });
+            }}
+            showFiltersList={showPricesList}
+          >
+            <FaChevronDown size={IconSizes.otherSize} />
+          </ToggleMenuBtn>
         </InputWrap>
+        {showPricesList && priceList && (
+          <FiltersList
+            filters={priceList}
+            name={SearchParamsKeys.price}
+            action={onPriceClick}
+            currentValue={priceInputValue}
+          />
+        )}
       </Label>
       <Button type='submit' onClick={onSubmitFormBtnClick}>
         Search

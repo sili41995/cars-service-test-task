@@ -19,7 +19,7 @@ const CatalogPage: FC = () => {
   const brand = searchParams.get(SearchParamsKeys.brand) ?? '';
   const price = searchParams.get(SearchParamsKeys.price) ?? '';
 
-  const filteredCars = (() => {
+  const filteredCars = useMemo(() => {
     if (!cars) {
       return;
     }
@@ -31,7 +31,7 @@ const CatalogPage: FC = () => {
     });
 
     return filteredCarsByPrice;
-  })();
+  }, [brand, cars, price]);
 
   useEffect(() => {
     const pageNumber = Number.parseInt(page);
@@ -62,7 +62,7 @@ const CatalogPage: FC = () => {
       {filteredCars?.length ? (
         <>
           <CarsList cars={filteredCars} />
-          <LoadMoreBtn disabled={isLastPage} />
+          {!isLastPage && <LoadMoreBtn disabled={isLastPage} />}
         </>
       ) : (
         <DefaultMessage message={Messages.emptyList} />

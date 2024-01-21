@@ -1,4 +1,4 @@
-import { SearchParamsKeys } from 'constants/index';
+import { MouseEvent } from 'react';
 import { SetURLSearchParams } from 'react-router-dom';
 
 export interface ICar {
@@ -21,8 +21,6 @@ export interface ICar {
   mileage: number;
 }
 
-//state
-
 export interface ICarsState {
   items: ICar[] | null;
   isLoading: boolean;
@@ -38,7 +36,6 @@ export interface IState {
   favoritesCars: IFavoritesCarsState;
 }
 
-//other
 export interface IFetchCarsOptions {
   page?: string;
   limit: string;
@@ -87,4 +84,14 @@ export interface IFilters {
 export interface IFilteredCarsProps {
   cars: ICar[];
   filter: string;
+}
+
+export interface IGetPriceListProps {
+  cars: ICar[] | null;
+  step: number;
+}
+
+export interface IOnToggleMenuBtnClickProps {
+  e: MouseEvent<HTMLButtonElement>;
+  name: string;
 }

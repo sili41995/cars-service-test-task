@@ -1,5 +1,5 @@
-import { GeneralParams } from 'constants/index';
 import { ICar, IFilteredCarsProps } from 'types/types';
+import getValidPrice from './getValidPrice';
 
 const filterCarsByPrice = ({ cars, filter }: IFilteredCarsProps): ICar[] => {
   if (!filter) {
@@ -7,9 +7,7 @@ const filterCarsByPrice = ({ cars, filter }: IFilteredCarsProps): ICar[] => {
   }
 
   return cars.filter((car) => {
-    const rentalPrice = car.rentalPrice
-      .split(GeneralParams.dollar)
-      .join(GeneralParams.emptyStr);
+    const rentalPrice = getValidPrice(car.rentalPrice);
 
     return Number(rentalPrice) < Number(filter);
   });

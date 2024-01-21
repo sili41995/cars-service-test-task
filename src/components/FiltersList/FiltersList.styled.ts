@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
+import { IStyledProps } from './FiltersList.types';
+import { SearchParamsKeys } from 'constants/index';
 
-export const List = styled.ul`
+export const List = styled.ul<IStyledProps>`
   position: absolute;
   top: 100%;
   left: 0;
@@ -9,7 +11,8 @@ export const List = styled.ul`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing(2)};
-  height: 272px;
+  height: ${({ name }) =>
+    name === SearchParamsKeys.price ? '188px' : '272px'};
   width: 100%;
   padding: ${({ theme }) =>
     `${theme.spacing(3.5)} ${theme.spacing(2)} ${theme.spacing(

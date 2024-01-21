@@ -101,7 +101,7 @@ export const ToggleMenuBtn = styled.button<IStyledProps>`
   background-color: transparent;
   transform-origin: center;
   transform: translateY(-50%)
-    ${({ showBrandsList }) => showBrandsList && 'rotate(180deg)'};
+    ${({ showFiltersList }) => showFiltersList && 'rotate(180deg)'};
   transition: transform ${({ theme }) => theme.transitionDurationAndFunc};
   &:is(:hover, :focus) svg {
     color: ${({ theme }) => theme.colors.primaryColor};

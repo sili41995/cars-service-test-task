@@ -13,3 +13,5 @@ export { default as addDelimiter } from './addDelimiter';
 export { default as filterCarsByBrand } from './filterCarsByBrand';
 export { default as filterCarsByPrice } from './filterCarsByPrice';
 export { default as firstSymbolToUpperCase } from './firstSymbolToUpperCase';
+export { default as getPriceList } from './getPriceList';
+export { default as getValidPrice } from './getValidPrice';

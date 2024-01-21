@@ -6,3 +6,7 @@ export interface IProps {
   action: (e: MouseEvent<HTMLInputElement>) => void;
   currentValue: string;
 }
+
+export interface IStyledProps {
+  name: string;
+}
