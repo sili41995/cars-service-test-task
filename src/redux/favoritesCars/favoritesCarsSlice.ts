@@ -6,14 +6,21 @@ const favoritesCarsSlice = createSlice({
   name: 'favoritesCars',
   initialState: initialState.favoritesCars as IFavoritesCarsState,
   reducers: {
-    changeFavList: ({ id }, { payload }) => ({
-      ...initialState.favoritesCars,
-      id: id?.includes(payload)
-        ? id?.filter((item) => item !== payload)
-        : id
-        ? [...id, payload]
-        : [payload],
-    }),
+    changeFavList: ({ ids }, { payload }) => {
+      const nextState = { ...initialState.favoritesCars };
+      if (ids) {
+        const idIsPresent = ids.includes(payload);
+        const filteredIds = ids.filter((item) => item !== payload);
+        const updateIds = filteredIds.length
+          ? filteredIds
+          : initialState.favoritesCars.ids;
+        nextState.ids = idIsPresent ? updateIds : [...ids, payload];
+      } else {
+        nextState.ids = [payload];
+      }
+
+      return nextState;
+    },
   },
 });
 

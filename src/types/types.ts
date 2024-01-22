@@ -28,7 +28,7 @@ export interface ICarsState {
 }
 
 export interface IFavoritesCarsState {
-  id: string[] | null;
+  ids: string[] | null;
 }
 
 export interface IState {

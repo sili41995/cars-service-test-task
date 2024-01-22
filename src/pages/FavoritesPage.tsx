@@ -63,7 +63,7 @@ const FavoritesPage: FC = () => {
   return (
     <>
       {fetchCarsStatus === FetchStatuses.pending && <Loader />}
-      {cars && cars.length ? (
+      {favoritesCarsId && cars ? (
         <CarsList cars={cars} />
       ) : (
         <DefaultMessage message={Messages.emptyList} />

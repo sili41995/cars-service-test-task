@@ -7,7 +7,7 @@ const initialState: IState = {
     error: null,
   },
   favoritesCars: {
-    id: null,
+    ids: null,
   },
 };
 
