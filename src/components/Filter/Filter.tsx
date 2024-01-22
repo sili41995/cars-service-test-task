@@ -2,15 +2,7 @@ import { GeneralParams, IconSizes, SearchParamsKeys } from 'constants/index';
 import useSetSearchParams from 'hooks/useSetSearchParams';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { IFilters, IOnMenuItemClick } from 'types/types';
-import {
-  Form,
-  Input,
-  InputWrap,
-  Label,
-  Prefix,
-  Title,
-  ToggleMenuBtn,
-} from './Filter.styled';
+import { Form } from './Filter.styled';
 import { useState } from 'react';
 import { FaChevronDown } from 'react-icons/fa';
 import {
@@ -20,10 +12,10 @@ import {
   onToggleMenuBtnClick,
 } from 'utils';
 import brands from 'constants/makes.json';
-import FiltersList from 'components/FiltersList/FiltersList';
 import { useAppSelector } from 'hooks/redux';
 import { selectCars } from '../../redux/cars/selectors';
 import SubmitBtn from 'components/SubmitBtn';
+import FilterItem from 'components/FilterItem/FilterItem';
 
 const Filter = () => {
   const [showBrandsList, setShowBrandsList] = useState<boolean>(false);
@@ -78,38 +70,25 @@ const Filter = () => {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      <Label>
-        <Title>Car brand</Title>
-        <InputWrap>
-          <Input
-            type='text'
-            placeholder='Enter the text'
-            defaultValue={brandDefaultValue}
-            {...register(SearchParamsKeys.brand)}
-          />
-          <ToggleMenuBtn
-            type='button'
-            onClick={(e) => {
-              onToggleMenuBtnClick({ e, setState: setShowBrandsList });
-            }}
-            showFiltersList={showBrandsList}
-          >
-            <FaChevronDown size={IconSizes.otherSize} />
-          </ToggleMenuBtn>
-        </InputWrap>
-        {showBrandsList && (
-          <FiltersList
-            filters={brands}
-            name={SearchParamsKeys.brand}
-            menuHeight={272}
-            action={(e) => {
-              onMenuItemClick({ e, name: SearchParamsKeys.brand });
-            }}
-            currentValue={brandInputValue}
-          />
-        )}
-      </Label>
-      <Label>
+      <FilterItem
+        inputSettings={{ ...register(SearchParamsKeys.brand) }}
+        title='Car brand'
+        placeholder='Enter the text'
+        defaultValue={brandDefaultValue}
+        showMenu={showBrandsList}
+        menuBtnIcon={<FaChevronDown size={IconSizes.otherSize} />}
+        variants={brands}
+        menuHeight={272}
+        currentValue={brandInputValue}
+        filtersListName={SearchParamsKeys.brand}
+        onMenuBtnClick={(e) => {
+          onToggleMenuBtnClick({ e, setState: setShowBrandsList });
+        }}
+        action={(e) => {
+          onMenuItemClick({ e, name: SearchParamsKeys.brand });
+        }}
+      />
+      {/* <Label>
         <Title>Price/ 1 hour</Title>
         <InputWrap>
           <Prefix inputName={SearchParamsKeys.price}>To</Prefix>
@@ -141,7 +120,7 @@ const Filter = () => {
             currentValue={priceInputValue}
           />
         )}
-      </Label>
+      </Label> */}
       <SubmitBtn title='Search' />
     </Form>
   );
