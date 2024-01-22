@@ -13,7 +13,6 @@ export interface IProps {
   defaultValue: string;
   placeholder: string;
   leftDistance?: number;
-  menuHeight: number;
   filtersListName: string;
   disabled?: boolean;
 }

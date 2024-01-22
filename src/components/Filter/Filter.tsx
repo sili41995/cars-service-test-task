@@ -78,7 +78,6 @@ const Filter = () => {
         showMenu={showBrandsList}
         menuBtnIcon={<FaChevronDown size={IconSizes.otherSize} />}
         variants={brands}
-        menuHeight={272}
         currentValue={brandInputValue}
         filtersListName={SearchParamsKeys.brand}
         onMenuBtnClick={(e) => {

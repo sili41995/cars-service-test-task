@@ -4,14 +4,8 @@ import { Input, Item, Label, List, Title } from './FiltersList.styled';
 import { SearchParamsKeys } from 'constants/index';
 import { getValidPrice } from 'utils';
 
-const FiltersList: FC<IProps> = ({
-  filters,
-  menuHeight,
-  action,
-  currentValue,
-  name,
-}) => (
-  <List menuHeight={menuHeight}>
+const FiltersList: FC<IProps> = ({ filters, action, currentValue, name }) => (
+  <List name={name}>
     {filters.map((item, index) => {
       const inputValue =
         name === SearchParamsKeys.price

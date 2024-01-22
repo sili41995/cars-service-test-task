@@ -23,7 +23,6 @@ const FilterItem: FC<IProps> = ({
   defaultValue,
   placeholder,
   leftDistance,
-  menuHeight,
   filtersListName,
   disabled = false,
 }) => {
@@ -51,7 +50,6 @@ const FilterItem: FC<IProps> = ({
       {showMenu && (
         <FiltersList
           filters={variants}
-          menuHeight={menuHeight}
           name={filtersListName}
           action={action}
           currentValue={currentValue}
