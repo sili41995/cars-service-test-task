@@ -1,4 +1,4 @@
-import { MouseEvent } from 'react';
+import { Dispatch, FormEvent, MouseEvent } from 'react';
 import { SetURLSearchParams } from 'react-router-dom';
 
 export interface ICar {
@@ -93,5 +93,10 @@ export interface IGetPriceListProps {
 
 export interface IOnToggleMenuBtnClickProps {
   e: MouseEvent<HTMLButtonElement>;
+  setState: Dispatch<React.SetStateAction<boolean>>;
+}
+
+export interface IOnMenuItemClick {
+  e: FormEvent<HTMLInputElement>;
   name: string;
 }

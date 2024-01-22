@@ -1,9 +1,8 @@
 import { GeneralParams, IconSizes, SearchParamsKeys } from 'constants/index';
 import useSetSearchParams from 'hooks/useSetSearchParams';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { IFilters, IOnToggleMenuBtnClickProps } from 'types/types';
+import { IFilters, IOnMenuItemClick } from 'types/types';
 import {
-  Button,
   Form,
   Input,
   InputWrap,
@@ -12,18 +11,19 @@ import {
   Title,
   ToggleMenuBtn,
 } from './Filter.styled';
-import { MouseEvent, useState } from 'react';
+import { useState } from 'react';
 import { FaChevronDown } from 'react-icons/fa';
 import {
   firstSymbolToUpperCase,
   getPriceList,
   getValidPrice,
-  makeBlur,
+  onToggleMenuBtnClick,
 } from 'utils';
 import brands from 'constants/makes.json';
 import FiltersList from 'components/FiltersList/FiltersList';
 import { useAppSelector } from 'hooks/redux';
 import { selectCars } from '../../redux/cars/selectors';
+import SubmitBtn from 'components/SubmitBtn';
 
 const Filter = () => {
   const [showBrandsList, setShowBrandsList] = useState<boolean>(false);
@@ -56,36 +56,24 @@ const Filter = () => {
     });
   };
 
-  const onToggleMenuBtnClick = ({
-    e,
-    name,
-  }: IOnToggleMenuBtnClickProps): void => {
-    if (name === SearchParamsKeys.brand) {
-      setShowBrandsList((prevState) => !prevState);
+  const onMenuItemClick = ({ e, name }: IOnMenuItemClick) => {
+    let value = e.currentTarget.value;
+
+    switch (name) {
+      case SearchParamsKeys.price:
+        value = `${value}${GeneralParams.dollar}`;
+        setShowPricesList(false);
+        break;
+
+      case SearchParamsKeys.brand:
+        setShowBrandsList(false);
+        break;
+
+      default:
+        return;
     }
 
-    if (name === SearchParamsKeys.price) {
-      setShowPricesList((prevState) => !prevState);
-    }
-    makeBlur(e.currentTarget);
-  };
-
-  const onBrandClick = (e: MouseEvent<HTMLInputElement>) => {
-    const value = e.currentTarget.value;
-    const inputName = SearchParamsKeys.brand;
-    setValue(inputName, value);
-    setShowBrandsList(false);
-  };
-
-  const onPriceClick = (e: MouseEvent<HTMLInputElement>) => {
-    const value = `${e.currentTarget.value}${GeneralParams.dollar}`;
-    const inputName = SearchParamsKeys.price;
-    setValue(inputName, value);
-    setShowPricesList(false);
-  };
-
-  const onSubmitFormBtnClick = (e: MouseEvent<HTMLButtonElement>) => {
-    makeBlur(e.currentTarget);
+    setValue(name, value);
   };
 
   return (
@@ -102,7 +90,7 @@ const Filter = () => {
           <ToggleMenuBtn
             type='button'
             onClick={(e) => {
-              onToggleMenuBtnClick({ e, name: SearchParamsKeys.brand });
+              onToggleMenuBtnClick({ e, setState: setShowBrandsList });
             }}
             showFiltersList={showBrandsList}
           >
@@ -113,7 +101,10 @@ const Filter = () => {
           <FiltersList
             filters={brands}
             name={SearchParamsKeys.brand}
-            action={onBrandClick}
+            menuHeight={272}
+            action={(e) => {
+              onMenuItemClick({ e, name: SearchParamsKeys.brand });
+            }}
             currentValue={brandInputValue}
           />
         )}
@@ -132,7 +123,7 @@ const Filter = () => {
           <ToggleMenuBtn
             type='button'
             onClick={(e) => {
-              onToggleMenuBtnClick({ e, name: SearchParamsKeys.price });
+              onToggleMenuBtnClick({ e, setState: setShowPricesList });
             }}
             showFiltersList={showPricesList}
           >
@@ -142,15 +133,16 @@ const Filter = () => {
         {showPricesList && priceList && (
           <FiltersList
             filters={priceList}
+            menuHeight={188}
             name={SearchParamsKeys.price}
-            action={onPriceClick}
+            action={(e) => {
+              onMenuItemClick({ e, name: SearchParamsKeys.price });
+            }}
             currentValue={priceInputValue}
           />
         )}
       </Label>
-      <Button type='submit' onClick={onSubmitFormBtnClick}>
-        Search
-      </Button>
+      <SubmitBtn title='Search' />
     </Form>
   );
 };

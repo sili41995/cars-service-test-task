@@ -35,7 +35,7 @@ export const Input = styled.input`
   border-radius: 14px;
   background-color: #f7f7fb;
   padding: 14px;
-  border: 3px solid;
+  border: 2px solid;
   border-color: transparent;
   color: #121417;
   font-family: Manrope;
@@ -73,23 +73,6 @@ export const Prefix = styled.p<IStyledProps>`
   font-size: 18px;
   font-weight: ${({ theme }) => theme.fontWeight.secondaryFontWeight};
   line-height: 1.11;
-`;
-
-export const Button = styled.button`
-  height: 48px;
-  border-radius: 12px;
-  border-color: transparent;
-  background-color: ${({ theme }) => theme.colors.primaryColor};
-  padding: 0 ${({ theme }) => theme.spacing(11)};
-  color: ${({ theme }) => theme.colors.whiteColor};
-  font-family: Manrope;
-  font-size: 14px;
-  font-weight: ${({ theme }) => theme.fontWeight.otherFontWeight};
-  line-height: 1.43;
-  transition: background-color ${({ theme }) => theme.transitionDurationAndFunc};
-  &:is(:hover, :focus) {
-    background-color: ${({ theme }) => theme.colors.accentColor};
-  }
 `;
 
 export const ToggleMenuBtn = styled.button<IStyledProps>`

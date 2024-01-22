@@ -15,3 +15,5 @@ export { default as filterCarsByPrice } from './filterCarsByPrice';
 export { default as firstSymbolToUpperCase } from './firstSymbolToUpperCase';
 export { default as getPriceList } from './getPriceList';
 export { default as getValidPrice } from './getValidPrice';
+export { default as onSubmitFormBtnClick } from './onSubmitFormBtnClick';
+export { default as onToggleMenuBtnClick } from './onToggleMenuBtnClick';

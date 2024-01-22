@@ -2,11 +2,12 @@ import { MouseEvent } from 'react';
 
 export interface IProps {
   filters: string[];
-  name: string;
+  menuHeight: number;
   action: (e: MouseEvent<HTMLInputElement>) => void;
   currentValue: string;
+  name: string;
 }
 
 export interface IStyledProps {
-  name: string;
+  menuHeight: number;
 }
