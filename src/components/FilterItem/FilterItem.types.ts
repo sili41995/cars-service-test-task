@@ -4,6 +4,7 @@ export interface IProps {
   title: string;
   prefix?: string;
   inputSettings: {};
+  showMenu: boolean;
   menuBtnIcon?: ReactNode;
   defaultValue: string;
   placeholder: string;

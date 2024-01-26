@@ -19,29 +19,38 @@ const FilterItem: FC<IProps> = ({
   placeholder,
   leftDistance,
   disabled = false,
+  showMenu,
   children,
 }) => {
+  const input = (
+    <Input
+      {...inputSettings}
+      type='text'
+      placeholder={placeholder}
+      defaultValue={defaultValue}
+      disabled={disabled}
+    />
+  );
+
   return (
     <Label>
       <Title>{title}</Title>
-      <InputWrap>
-        {prefix && <Prefix leftDistance={leftDistance}>{prefix}</Prefix>}
-        <Input
-          {...inputSettings}
-          type='text'
-          placeholder={placeholder}
-          defaultValue={defaultValue}
-          disabled={disabled}
-        />
-        <ToggleMenuBtn
-          type='button'
-          onClick={onMenuBtnClick}
-          showFiltersList={Boolean(children)}
-        >
-          {menuBtnIcon}
-        </ToggleMenuBtn>
-        {children}
-      </InputWrap>
+      {children ? (
+        <InputWrap>
+          {prefix && <Prefix leftDistance={leftDistance}>{prefix}</Prefix>}
+          {input}
+          <ToggleMenuBtn
+            type='button'
+            onClick={onMenuBtnClick}
+            showFiltersList={Boolean(showMenu)}
+          >
+            {menuBtnIcon}
+          </ToggleMenuBtn>
+          {showMenu && children}
+        </InputWrap>
+      ) : (
+        input
+      )}
     </Label>
   );
 };

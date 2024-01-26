@@ -77,20 +77,19 @@ const Filter = () => {
         placeholder='Enter the text'
         defaultValue={brandDefaultValue}
         menuBtnIcon={<FaChevronDown size={IconSizes.otherSize} />}
+        showMenu={showBrandsList}
         onMenuBtnClick={(e) => {
           onToggleMenuBtnClick({ e, setState: setShowBrandsList });
         }}
       >
-        {showBrandsList && (
-          <FiltersList
-            filters={brands}
-            name={SearchParamsKeys.brand}
-            action={(e) => {
-              onMenuItemClick({ e, name: SearchParamsKeys.brand });
-            }}
-            currentValue={brandInputValue}
-          />
-        )}
+        <FiltersList
+          filters={brands}
+          name={SearchParamsKeys.brand}
+          action={(e) => {
+            onMenuItemClick({ e, name: SearchParamsKeys.brand });
+          }}
+          currentValue={brandInputValue}
+        />
       </FilterItem>
       {/* <Label>
         <Title>Price/ 1 hour</Title>
