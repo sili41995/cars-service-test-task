@@ -1,20 +1,16 @@
-import { FormEvent, MouseEvent, ReactNode } from 'react';
+import { MouseEvent, ReactNode } from 'react';
 
 export interface IProps {
   title: string;
   prefix?: string;
   inputSettings: {};
-  menuBtnIcon: ReactNode;
-  showMenu: boolean;
-  action: (e: FormEvent<HTMLInputElement>) => void;
-  currentValue: string;
-  variants: string[];
-  onMenuBtnClick: (e: MouseEvent<HTMLButtonElement>) => void;
+  menuBtnIcon?: ReactNode;
   defaultValue: string;
   placeholder: string;
   leftDistance?: number;
-  filtersListName: string;
   disabled?: boolean;
+  onMenuBtnClick: (e: MouseEvent<HTMLButtonElement>) => void;
+  children?: ReactNode;
 }
 
 export interface IStyledProps {

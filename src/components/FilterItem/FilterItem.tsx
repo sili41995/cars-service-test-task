@@ -6,7 +6,6 @@ import {
   Title,
   ToggleMenuBtn,
 } from './FilterItem.styled';
-import FiltersList from 'components/FiltersList';
 import { FC } from 'react';
 import { IProps } from './FilterItem.types';
 
@@ -15,16 +14,12 @@ const FilterItem: FC<IProps> = ({
   prefix,
   inputSettings,
   menuBtnIcon,
-  showMenu,
-  action,
-  currentValue,
-  variants,
   onMenuBtnClick,
   defaultValue,
   placeholder,
   leftDistance,
-  filtersListName,
   disabled = false,
+  children,
 }) => {
   return (
     <Label>
@@ -41,20 +36,12 @@ const FilterItem: FC<IProps> = ({
         <ToggleMenuBtn
           type='button'
           onClick={onMenuBtnClick}
-          showFiltersList={showMenu}
-          //или сделать другую переменную
+          showFiltersList={Boolean(children)}
         >
           {menuBtnIcon}
         </ToggleMenuBtn>
+        {children}
       </InputWrap>
-      {showMenu && (
-        <FiltersList
-          filters={variants}
-          name={filtersListName}
-          action={action}
-          currentValue={currentValue}
-        />
-      )}
     </Label>
   );
 };

@@ -16,6 +16,7 @@ import { useAppSelector } from 'hooks/redux';
 import { selectCars } from '../../redux/cars/selectors';
 import SubmitBtn from 'components/SubmitBtn';
 import FilterItem from 'components/FilterItem/FilterItem';
+import FiltersList from 'components/FiltersList';
 
 const Filter = () => {
   const [showBrandsList, setShowBrandsList] = useState<boolean>(false);
@@ -75,18 +76,22 @@ const Filter = () => {
         title='Car brand'
         placeholder='Enter the text'
         defaultValue={brandDefaultValue}
-        showMenu={showBrandsList}
         menuBtnIcon={<FaChevronDown size={IconSizes.otherSize} />}
-        variants={brands}
-        currentValue={brandInputValue}
-        filtersListName={SearchParamsKeys.brand}
         onMenuBtnClick={(e) => {
           onToggleMenuBtnClick({ e, setState: setShowBrandsList });
         }}
-        action={(e) => {
-          onMenuItemClick({ e, name: SearchParamsKeys.brand });
-        }}
-      />
+      >
+        {showBrandsList && (
+          <FiltersList
+            filters={brands}
+            name={SearchParamsKeys.brand}
+            action={(e) => {
+              onMenuItemClick({ e, name: SearchParamsKeys.brand });
+            }}
+            currentValue={brandInputValue}
+          />
+        )}
+      </FilterItem>
       {/* <Label>
         <Title>Price/ 1 hour</Title>
         <InputWrap>

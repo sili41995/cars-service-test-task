@@ -18,6 +18,7 @@ const CatalogPage: FC = () => {
   const page = searchParams.get(SearchParamsKeys.page) ?? '1';
   const brand = searchParams.get(SearchParamsKeys.brand) ?? '';
   const price = searchParams.get(SearchParamsKeys.price) ?? '';
+  const shouldRenderControls = Boolean(cars?.length) && count;
 
   const filteredCars = useMemo(() => {
     if (!cars) {
@@ -32,8 +33,6 @@ const CatalogPage: FC = () => {
 
     return filteredCarsByPrice;
   }, [brand, cars, price]);
-
-  const shouldRenderList = cars && filteredCars && count;
 
   useEffect(() => {
     const pageNumber = Number.parseInt(page);
@@ -60,17 +59,17 @@ const CatalogPage: FC = () => {
 
   return (
     <>
-      <Filter />
-      {shouldRenderList ? (
-        <>
-          <CarsList cars={filteredCars} />
-          <PaginationBar
-            quantity={Number(FetchParams.limit)}
-            itemsQuantity={count}
-          />
-        </>
+      {shouldRenderControls && <Filter />}
+      {filteredCars?.length ? (
+        <CarsList cars={filteredCars} />
       ) : (
         <DefaultMessage message={Messages.emptyList} />
+      )}
+      {shouldRenderControls && (
+        <PaginationBar
+          quantity={Number(FetchParams.limit)}
+          itemsQuantity={count}
+        />
       )}
     </>
   );
