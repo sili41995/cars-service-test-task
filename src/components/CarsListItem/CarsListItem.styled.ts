@@ -36,7 +36,7 @@ export const Price = styled.p`
   margin-right: 9px;
   margin-left: auto;
   color: #121417;
-  font-family: Manrope;
+  font-family: ${({ theme }) => theme.fontFamily.primaryFontFamily};
   font-size: 16px;
   font-weight: ${({ theme }) => theme.fontWeight.secondaryFontWeight};
   line-height: 1.5;
@@ -72,7 +72,7 @@ export const LearnMoreBtn = styled.button`
   margin-top: ${({ theme }) => theme.spacing(7)};
   padding: ${({ theme }) => theme.spacing(3)};
   color: ${({ theme }) => theme.colors.whiteColor};
-  font-family: Manrope;
+  font-family: ${({ theme }) => theme.fontFamily.primaryFontFamily};
   font-size: 14px;
   font-weight: ${({ theme }) => theme.fontWeight.otherFontWeight};
   line-height: 1.43;

@@ -1,9 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import carsServiceApi from 'service/carsServiceApi';
-import { ICar, IFetchCarsOptions } from 'types/types';
+import { IFetchCarsOptions, IFetchCarResponse } from 'types/types';
 
 export const fetchCars = createAsyncThunk<
-  ICar[],
+  IFetchCarResponse,
   IFetchCarsOptions,
   { rejectValue: string }
 >(

@@ -19,7 +19,7 @@ export const Image = styled.img`
 
 export const Description = styled.p`
   color: #121417;
-  font-family: Manrope;
+  font-family: ${({ theme }) => theme.fontFamily.primaryFontFamily};
   font-size: 14px;
   font-weight: ${({ theme }) => theme.fontWeight.primaryFontWeight};
   line-height: 1.43;
@@ -34,7 +34,7 @@ export const Container = styled.div`
 
 export const Title = styled.p`
   color: #121417;
-  font-family: Manrope;
+  font-family: ${({ theme }) => theme.fontFamily.primaryFontFamily};
   font-size: 14px;
   font-weight: ${({ theme }) => theme.fontWeight.secondaryFontWeight};
   line-height: 1.43;
@@ -49,7 +49,7 @@ export const Link = styled.a`
   background-color: ${({ theme }) => theme.colors.primaryColor};
   text-align: center;
   color: ${({ theme }) => theme.colors.whiteColor};
-  font-family: Manrope;
+  font-family: ${({ theme }) => theme.fontFamily.primaryFontFamily};
   font-size: 14px;
   font-weight: ${({ theme }) => theme.fontWeight.otherFontWeight};
   line-height: 1.43;

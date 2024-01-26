@@ -7,7 +7,7 @@ const CarsList: FC<IProps> = ({ cars }) => {
   return (
     <List>
       {cars.map((car) => (
-        <CarsListItem key={car.id} car={car} />
+        <CarsListItem key={car._id} car={car} />
       ))}
     </List>
   );

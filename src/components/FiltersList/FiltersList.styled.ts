@@ -34,7 +34,7 @@ export const Label = styled.label`
 
 export const Title = styled.span`
   color: rgba(18, 20, 23, 0.2);
-  font-family: Manrope;
+  font-family: ${({ theme }) => theme.fontFamily.primaryFontFamily};
   font-size: 16px;
   font-weight: ${({ theme }) => theme.fontWeight.secondaryFontWeight};
   line-height: 1.25;

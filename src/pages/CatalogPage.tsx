@@ -2,19 +2,19 @@ import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { FC, useEffect, useMemo } from 'react';
 import { fetchCars } from '../redux/cars/operations';
 import { filterCarsByBrand, filterCarsByPrice, toasts } from 'utils';
-import { selectCars } from '../redux/cars/selectors';
+import { selectCars, selectCount } from '../redux/cars/selectors';
 import CarsList from 'components/CarsList';
 import { useSearchParams } from 'react-router-dom';
 import { FetchParams, Messages, SearchParamsKeys } from 'constants/index';
-import LoadMoreBtn from 'components/LoadMoreBtn';
 import DefaultMessage from 'components/DefaultMessage';
 import Filter from 'components/Filter';
+import PaginationBar from 'components/PaginationBar';
 
 const CatalogPage: FC = () => {
   const [searchParams] = useSearchParams();
   const dispatch = useAppDispatch();
   const cars = useAppSelector(selectCars);
-  const isLastPage = Number(cars?.length) < Number(FetchParams.limit);
+  const count = useAppSelector(selectCount);
   const page = searchParams.get(SearchParamsKeys.page) ?? '1';
   const brand = searchParams.get(SearchParamsKeys.brand) ?? '';
   const price = searchParams.get(SearchParamsKeys.price) ?? '';
@@ -32,6 +32,8 @@ const CatalogPage: FC = () => {
 
     return filteredCarsByPrice;
   }, [brand, cars, price]);
+
+  const shouldRenderList = cars && filteredCars && count;
 
   useEffect(() => {
     const pageNumber = Number.parseInt(page);
@@ -59,12 +61,17 @@ const CatalogPage: FC = () => {
   return (
     <>
       <Filter />
-      {filteredCars?.length ? (
-        <CarsList cars={filteredCars} />
+      {shouldRenderList ? (
+        <>
+          <CarsList cars={filteredCars} />
+          <PaginationBar
+            quantity={Number(FetchParams.limit)}
+            itemsQuantity={count}
+          />
+        </>
       ) : (
         <DefaultMessage message={Messages.emptyList} />
       )}
-      {!isLastPage && <LoadMoreBtn disabled={isLastPage} />}
     </>
   );
 };

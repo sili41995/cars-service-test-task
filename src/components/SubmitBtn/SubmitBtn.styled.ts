@@ -7,7 +7,7 @@ export const Button = styled.button`
   background-color: ${({ theme }) => theme.colors.primaryColor};
   padding: 0 ${({ theme }) => theme.spacing(11)};
   color: ${({ theme }) => theme.colors.whiteColor};
-  font-family: Manrope;
+  font-family: ${({ theme }) => theme.fontFamily.primaryFontFamily};
   font-size: 14px;
   font-weight: ${({ theme }) => theme.fontWeight.otherFontWeight};
   line-height: 1.43;

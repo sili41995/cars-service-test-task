@@ -9,7 +9,9 @@ interface ITheme {
   fontSize: { [key: string]: number };
   padding: { [key: string]: number };
   borderRadius: { [key: string]: number };
+  fontFamily: { [key: string]: string };
   deskContainerWidth: number;
+  primaryGap: number;
   transitionDurationAndFunc: string;
   spacing: (value?: number) => string;
 }
@@ -42,7 +44,9 @@ const theme: ITheme = {
   borderRadius: {
     primaryBorderRadius: 4,
   },
+  fontFamily: { primaryFontFamily: 'Manrope' },
   deskContainerWidth: 1216,
+  primaryGap: 20,
   transitionDurationAndFunc: '250ms cubic-bezier(0.4, 0, 0.2, 1)',
   spacing: (value = 1) => `${value * 4}px`,
 };

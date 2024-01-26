@@ -22,7 +22,7 @@ export const Text = styled.p`
   align-items: center;
   gap: 5px;
   color: ${({ theme }) => theme.colors.characteristicsTextColor};
-  font-family: Manrope;
+  font-family: ${({ theme }) => theme.fontFamily.primaryFontFamily};
   font-size: 12px;
   font-weight: ${({ theme }) => theme.fontWeight.primaryFontWeight};
   line-height: 1.5;

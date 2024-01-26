@@ -1,14 +1,19 @@
-import { FetchParams, Messages } from 'constants/index';
-import { ICar, IFetchCarProps, IFetchCarsProps } from 'types/types';
+import { FetchParams } from 'constants/index';
+import {
+  ICar,
+  IFetchCarProps,
+  IFetchCarResponse,
+  IFetchCarsProps,
+} from 'types/types';
 
 class CarsServiceApi {
-  private BASE_URL = 'https://648c40eb8620b8bae7ec8cc7.mockapi.io/cars';
+  private BASE_URL = 'https://carservice-rest-api.onrender.com/api';
 
   fetchCars({
     page = FetchParams.page,
     limit,
     signal,
-  }: IFetchCarsProps): Promise<ICar[]> {
+  }: IFetchCarsProps): Promise<IFetchCarResponse> {
     const options = {
       signal,
       method: 'GET',
@@ -20,13 +25,14 @@ class CarsServiceApi {
     return fetch(
       `${this.BASE_URL}/adverts?page=${page}&limit=${limit}`,
       options
-    ).then((response) => {
-      if (!response.ok) {
-        throw Error(Messages.fetchAdvertsError);
-      }
-
-      return response.json();
-    });
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.message) {
+          throw Error(data.message);
+        }
+        return data;
+      });
   }
 
   fetchCarById({ signal, id }: IFetchCarProps): Promise<ICar> {
@@ -38,13 +44,14 @@ class CarsServiceApi {
       },
     };
 
-    return fetch(`${this.BASE_URL}/adverts/${id}`, options).then((response) => {
-      if (!response.ok) {
-        throw Error(Messages.fetchAdvertByIdError);
-      }
-
-      return response.json();
-    });
+    return fetch(`${this.BASE_URL}/adverts/${id}`, options)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.message) {
+          throw Error(data.message);
+        }
+        return data;
+      });
   }
 }
 

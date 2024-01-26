@@ -24,10 +24,10 @@ import FunctionalitiesList from 'components/FunctionalitiesList';
 
 const CarsListItem: FC<IProps> = ({ car }) => {
   const [showModal, setShowModal] = useState<boolean>(false);
-  const { rentalPrice, id, make, model, year } = car;
+  const { rentalPrice, _id, make, model, year } = car;
   const dispatch = useAppDispatch();
   const favoritesCars = useAppSelector(selectFavoritesCarsId);
-  const isFavCar = favoritesCars?.includes(id);
+  const isFavCar = favoritesCars?.includes(_id);
   const favBtnIcon = isFavCar ? (
     <FaHeart size={IconSizes.primarySize} />
   ) : (
@@ -37,7 +37,7 @@ const CarsListItem: FC<IProps> = ({ car }) => {
   const { carImg, carImgDesc, functionalities } = getCarInfo(car);
 
   const onFavBtnClick = (e: MouseEvent<HTMLButtonElement>) => {
-    dispatch(changeFavList(id));
+    dispatch(changeFavList(_id));
     makeBlur(e.currentTarget);
   };
 

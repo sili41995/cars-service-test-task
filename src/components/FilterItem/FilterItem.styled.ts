@@ -11,7 +11,7 @@ export const Label = styled.label`
 
 export const Title = styled.span`
   color: #8a8a89;
-  font-family: Manrope;
+  font-family: ${({ theme }) => theme.fontFamily.primaryFontFamily};
   font-size: 14px;
   font-weight: ${({ theme }) => theme.fontWeight.secondaryFontWeight};
   line-height: 1.29;
@@ -27,7 +27,7 @@ export const Prefix = styled.p<IStyledProps>`
   left: ${({ leftDistance }) => leftDistance}px;
   transform: translateY(-50%);
   color: #121417;
-  font-family: Manrope;
+  font-family: ${({ theme }) => theme.fontFamily.primaryFontFamily};
   font-size: 18px;
   font-weight: ${({ theme }) => theme.fontWeight.secondaryFontWeight};
   line-height: 1.11;
@@ -42,7 +42,7 @@ export const Input = styled.input`
   border: 2px solid;
   border-color: transparent;
   color: #121417;
-  font-family: Manrope;
+  font-family: ${({ theme }) => theme.fontFamily.primaryFontFamily};
   font-size: 18px;
   font-weight: ${({ theme }) => theme.fontWeight.secondaryFontWeight};
   line-height: 1.11;

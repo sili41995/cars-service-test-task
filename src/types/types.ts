@@ -3,7 +3,7 @@ import { SetURLSearchParams } from 'react-router-dom';
 
 export interface ICar {
   [key: string]: string | number | string[] | null;
-  id: string;
+  _id: string;
   year: number;
   make: string;
   model: string;
@@ -25,6 +25,7 @@ export interface ICarsState {
   items: ICar[] | null;
   isLoading: boolean;
   error: string | null;
+  count: number | null;
 }
 
 export interface IFavoritesCarsState {
@@ -39,6 +40,11 @@ export interface IState {
 export interface IFetchCarsOptions {
   page?: string;
   limit: string;
+}
+
+export interface IFetchCarResponse {
+  adverts: ICar[];
+  count: number;
 }
 
 export interface IFetchCarsProps extends IFetchCarsOptions {

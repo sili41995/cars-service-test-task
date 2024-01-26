@@ -17,3 +17,6 @@ export { default as getPriceList } from './getPriceList';
 export { default as getValidPrice } from './getValidPrice';
 export { default as onSubmitFormBtnClick } from './onSubmitFormBtnClick';
 export { default as onToggleMenuBtnClick } from './onToggleMenuBtnClick';
+export { default as getPageNumbers } from './getPageNumbers';
+export { default as getPaginationBarSettings } from './getPaginationBarSettings';
+export { default as setBtnDisplayProp } from './setBtnDisplayProp';

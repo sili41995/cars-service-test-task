@@ -13,7 +13,8 @@ const carsSlice = createSlice({
         ...state,
         isLoading: false,
         error: initialState.cars.error,
-        items: payload,
+        items: payload.adverts,
+        count: payload.count,
       }))
       .addMatcher(isAnyOf(fetchCars.pending), (state) => ({
         ...state,
