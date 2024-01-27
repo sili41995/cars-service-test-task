@@ -6,6 +6,12 @@ import { getValidPrice } from 'utils';
 
 const FiltersList: FC<IProps> = ({ filters, action, currentValue, name }) => (
   <List name={name}>
+    <Item>
+      <Label>
+        <Title className={!currentValue ? 'active' : ''}>All</Title>
+        <Input type='radio' value='' name={name} onClick={action} />
+      </Label>
+    </Item>
     {filters.map((item, index) => {
       const inputValue =
         name === SearchParamsKeys.price

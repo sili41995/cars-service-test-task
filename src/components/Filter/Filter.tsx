@@ -33,6 +33,7 @@ const Filter = () => {
     cars,
     step: Number(GeneralParams.priceStep),
   });
+  const toggleMenuBtnIcon = <FaChevronDown size={IconSizes.otherSize} />;
 
   const onSubmit: SubmitHandler<IFilters> = (data) => {
     if (data.price) {
@@ -41,8 +42,6 @@ const Filter = () => {
     }
 
     Object.entries(data).forEach(([key, value]: string[]) => {
-      if (!value) return;
-
       updateSearchParams({ key, value: value.toLowerCase() });
       setShowBrandsList(false);
       setShowPricesList(false);
@@ -76,7 +75,7 @@ const Filter = () => {
         title='Car brand'
         placeholder='Enter the text'
         defaultValue={brandDefaultValue}
-        menuBtnIcon={<FaChevronDown size={IconSizes.otherSize} />}
+        menuBtnIcon={toggleMenuBtnIcon}
         showMenu={showBrandsList}
         onMenuBtnClick={(e) => {
           onToggleMenuBtnClick({ e, setState: setShowBrandsList });
@@ -91,31 +90,22 @@ const Filter = () => {
           currentValue={brandInputValue}
         />
       </FilterItem>
-      {/* <Label>
-        <Title>Price/ 1 hour</Title>
-        <InputWrap>
-          <Prefix inputName={SearchParamsKeys.price}>To</Prefix>
-          <Input
-            {...register(SearchParamsKeys.price)}
-            type='text'
-            placeholder='$'
-            defaultValue={price}
-            disabled
-          />
-          <ToggleMenuBtn
-            type='button'
-            onClick={(e) => {
-              onToggleMenuBtnClick({ e, setState: setShowPricesList });
-            }}
-            showFiltersList={showPricesList}
-          >
-            <FaChevronDown size={IconSizes.otherSize} />
-          </ToggleMenuBtn>
-        </InputWrap>
-        {showPricesList && priceList && (
+      <FilterItem
+        inputSettings={{ ...register(SearchParamsKeys.price) }}
+        title='Price/ 1 hour'
+        placeholder='$'
+        prefix='To'
+        leftDistance={18}
+        defaultValue={price}
+        menuBtnIcon={toggleMenuBtnIcon}
+        showMenu={showPricesList}
+        onMenuBtnClick={(e) => {
+          onToggleMenuBtnClick({ e, setState: setShowPricesList });
+        }}
+      >
+        {priceList && (
           <FiltersList
             filters={priceList}
-            menuHeight={188}
             name={SearchParamsKeys.price}
             action={(e) => {
               onMenuItemClick({ e, name: SearchParamsKeys.price });
@@ -123,7 +113,7 @@ const Filter = () => {
             currentValue={priceInputValue}
           />
         )}
-      </Label> */}
+      </FilterItem>
       <SubmitBtn title='Search' />
     </Form>
   );
