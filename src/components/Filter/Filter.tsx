@@ -27,8 +27,9 @@ const Filter = () => {
   const price = searchParams.get(SearchParamsKeys.price) ?? '';
   const { register, handleSubmit, setValue, watch } = useForm<IFilters>();
   const brandInputValue = watch(SearchParamsKeys.brand);
-  const priceInputValue = watch(SearchParamsKeys.price) ?? '';
+  const priceInputValue = watch(SearchParamsKeys.price);
   const brandDefaultValue = firstSymbolToUpperCase(brand);
+  const priceDefaultValue = `${price}${GeneralParams.dollar}`;
   const priceList = getPriceList({
     cars,
     step: Number(GeneralParams.priceStep),
@@ -93,10 +94,10 @@ const Filter = () => {
       <FilterItem
         inputSettings={{ ...register(SearchParamsKeys.price) }}
         title='Price/ 1 hour'
-        placeholder='$'
+        placeholder={String(GeneralParams.dollar)}
         prefix='To'
         leftDistance={18}
-        defaultValue={price}
+        defaultValue={priceDefaultValue}
         menuBtnIcon={toggleMenuBtnIcon}
         showMenu={showPricesList}
         onMenuBtnClick={(e) => {

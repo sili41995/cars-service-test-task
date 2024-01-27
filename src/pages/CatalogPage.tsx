@@ -2,23 +2,30 @@ import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { FC, useEffect, useMemo } from 'react';
 import { fetchCars } from '../redux/cars/operations';
 import { filterCarsByBrand, filterCarsByPrice, toasts } from 'utils';
-import { selectCars, selectCount } from '../redux/cars/selectors';
+import {
+  selectCars,
+  selectCount,
+  selectIsLoading,
+} from '../redux/cars/selectors';
 import CarsList from 'components/CarsList';
 import { useSearchParams } from 'react-router-dom';
 import { FetchParams, Messages, SearchParamsKeys } from 'constants/index';
 import DefaultMessage from 'components/DefaultMessage';
 import Filter from 'components/Filter';
 import PaginationBar from 'components/PaginationBar';
+import Loader from 'components/Loader';
 
 const CatalogPage: FC = () => {
   const [searchParams] = useSearchParams();
   const dispatch = useAppDispatch();
   const cars = useAppSelector(selectCars);
   const count = useAppSelector(selectCount);
+  const isLoading = useAppSelector(selectIsLoading);
   const page = searchParams.get(SearchParamsKeys.page) ?? '1';
   const brand = searchParams.get(SearchParamsKeys.brand) ?? '';
   const price = searchParams.get(SearchParamsKeys.price) ?? '';
-  const shouldRenderControls = Boolean(cars?.length) && count;
+  const shouldShowControls = Boolean(cars?.length) && count;
+  const shouldShowLoader = isLoading && !cars?.length;
 
   const filteredCars = useMemo(() => {
     if (!cars) {
@@ -57,15 +64,17 @@ const CatalogPage: FC = () => {
     };
   }, [dispatch, page]);
 
-  return (
+  return shouldShowLoader ? (
+    <Loader />
+  ) : (
     <>
-      {shouldRenderControls && <Filter />}
+      {shouldShowControls && <Filter />}
       {filteredCars?.length ? (
         <CarsList cars={filteredCars} />
       ) : (
         <DefaultMessage message={Messages.emptyList} />
       )}
-      {shouldRenderControls && (
+      {shouldShowControls && (
         <PaginationBar
           quantity={Number(FetchParams.limit)}
           itemsQuantity={count}
