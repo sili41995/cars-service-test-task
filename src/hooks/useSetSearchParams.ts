@@ -8,7 +8,7 @@ const useSetSearchParams = (): IUseSetSearchParams => {
     key,
     value,
   }: IUpdateSearchParamsProps): void => {
-    searchParams.set(key, value);
+    value ? searchParams.set(key, value) : searchParams.delete(key);
     setSearchParams(searchParams);
   };
 
