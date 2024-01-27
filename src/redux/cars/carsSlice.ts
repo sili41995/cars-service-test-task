@@ -20,10 +20,10 @@ const carsSlice = createSlice({
         ...state,
         isLoading: true,
       }))
-      .addMatcher(isAnyOf(fetchCars.rejected), (state, { payload }) => ({
+      .addMatcher(isAnyOf(fetchCars.rejected), (state, { payload, error }) => ({
         ...state,
         isLoading: false,
-        error: payload as string,
+        error: error.message || (payload as string),
       }));
   },
 });
