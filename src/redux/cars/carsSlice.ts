@@ -23,7 +23,7 @@ const carsSlice = createSlice({
       .addMatcher(isAnyOf(fetchCars.rejected), (state, { payload, error }) => ({
         ...state,
         isLoading: false,
-        error: error.message || (payload as string),
+        error: (payload as string) || (error.message as string),
       }));
   },
 });
