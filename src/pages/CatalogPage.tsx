@@ -25,7 +25,7 @@ const CatalogPage: FC = () => {
   const brand = searchParams.get(SearchParamsKeys.brand) ?? '';
   const price = searchParams.get(SearchParamsKeys.price) ?? '';
   const shouldShowControls = Boolean(cars?.length) && count;
-  const shouldShowLoader = isLoading && !cars?.length;
+  const shouldShowLoader = isLoading && !cars;
 
   const filteredCars = useMemo(() => {
     if (!cars) {

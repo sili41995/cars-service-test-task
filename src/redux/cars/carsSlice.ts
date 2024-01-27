@@ -19,6 +19,7 @@ const carsSlice = createSlice({
       .addMatcher(isAnyOf(fetchCars.pending), (state) => ({
         ...state,
         isLoading: true,
+        error: initialState.cars.error,
       }))
       .addMatcher(isAnyOf(fetchCars.rejected), (state, { payload, error }) => ({
         ...state,
