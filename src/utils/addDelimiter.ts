@@ -12,9 +12,13 @@ const addDelimiter = ({
   position,
 }: IAddDelimiterProps): string => {
   const symbols = str.split(GeneralParams.emptyStr).reverse();
+  let offset = 0;
 
   symbols.forEach((_, index) => {
-    index && index % position === 0 && symbols.splice(index, 0, delimiter);
+    if (index && index % position === 0) {
+      symbols.splice(index + offset, 0, delimiter);
+      offset += 1;
+    }
   });
 
   return symbols.reverse().join(GeneralParams.emptyStr);

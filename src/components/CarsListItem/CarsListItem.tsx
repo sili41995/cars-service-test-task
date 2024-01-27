@@ -17,7 +17,7 @@ import { AriaLabels, IconSizes, theme } from 'constants/index';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { changeFavList } from '../../redux/favoritesCars/favoritesCarsSlice';
 import { selectFavoritesCarsId } from '../../redux/favoritesCars/selectors';
-import ModalWin from 'components/Modal/ModalWin';
+import ModalWin from 'components/ModalWin/ModalWin';
 import CarDetails from 'components/CarDetails';
 import CarTitle from 'components/CarTitle';
 import FunctionalitiesList from 'components/FunctionalitiesList';

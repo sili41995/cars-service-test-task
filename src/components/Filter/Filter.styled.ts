@@ -7,3 +7,5 @@ export const Form = styled.form`
   align-items: flex-end;
   margin-bottom: 50px;
 `;
+
+export const InputGroup = styled.div``;

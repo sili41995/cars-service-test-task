@@ -20,3 +20,4 @@ export { default as onToggleMenuBtnClick } from './onToggleMenuBtnClick';
 export { default as getPageNumbers } from './getPageNumbers';
 export { default as getPaginationBarSettings } from './getPaginationBarSettings';
 export { default as setBtnDisplayProp } from './setBtnDisplayProp';
+export { default as getValueWithoutDelimiter } from './getValueWithoutDelimiter';

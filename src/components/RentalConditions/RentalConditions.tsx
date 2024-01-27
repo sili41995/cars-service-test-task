@@ -27,7 +27,7 @@ const RentalConditions: FC<IProps> = ({ rentalConditions }) => {
         if (isLongerNumber) {
           formattedItem = addDelimiter({
             str: formattedItem,
-            delimiter: ',',
+            delimiter: String(GeneralParams.comma),
             position: Number(GeneralParams.maxNumLength),
           });
         }

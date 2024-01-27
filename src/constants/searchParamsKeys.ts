@@ -2,7 +2,8 @@ const enum SearchParamsKeys {
   page = 'page',
   brand = 'brand',
   price = 'price',
-  mileage = 'mileage',
+  mileageFrom = 'mileageFrom',
+  mileageTo = 'mileageTo',
 }
 
 export default SearchParamsKeys;

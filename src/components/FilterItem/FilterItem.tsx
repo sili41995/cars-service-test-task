@@ -8,15 +8,16 @@ import {
 } from './FilterItem.styled';
 import { FC } from 'react';
 import { IProps } from './FilterItem.types';
+import { IconSizes } from 'constants/index';
+import { FaChevronDown } from 'react-icons/fa';
 
 const FilterItem: FC<IProps> = ({
-  title,
+  title = '',
   prefix,
   inputSettings,
-  menuBtnIcon,
   onMenuBtnClick,
   defaultValue,
-  placeholder,
+  placeholder = '',
   leftDistance,
   disabled = false,
   showMenu,
@@ -34,7 +35,7 @@ const FilterItem: FC<IProps> = ({
 
   return (
     <Label>
-      <Title>{title}</Title>
+      {title && <Title>{title}</Title>}
       {children ? (
         <InputWrap>
           {prefix && <Prefix leftDistance={leftDistance}>{prefix}</Prefix>}
@@ -44,7 +45,7 @@ const FilterItem: FC<IProps> = ({
             onClick={onMenuBtnClick}
             showFiltersList={Boolean(showMenu)}
           >
-            {menuBtnIcon}
+            <FaChevronDown size={IconSizes.otherSize} />
           </ToggleMenuBtn>
           {showMenu && children}
         </InputWrap>

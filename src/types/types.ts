@@ -85,6 +85,7 @@ export type NavLinks = Readonly<INavLink[]>;
 export interface IFilters {
   brand: string;
   price: string;
+  mileageFrom: string;
 }
 
 export interface IFilteredCarsProps {
@@ -105,4 +106,9 @@ export interface IOnToggleMenuBtnClickProps {
 export interface IOnMenuItemClick {
   e: FormEvent<HTMLInputElement>;
   name: string;
+}
+
+export interface IGetValueWithoutDelimiterProps {
+  value: string;
+  delimiter: string;
 }

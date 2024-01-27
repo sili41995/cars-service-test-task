@@ -1,16 +1,15 @@
 import { MouseEvent, ReactNode } from 'react';
 
 export interface IProps {
-  title: string;
+  title?: string;
   prefix?: string;
   inputSettings: {};
-  showMenu: boolean;
-  menuBtnIcon?: ReactNode;
+  showMenu?: boolean;
   defaultValue: string;
-  placeholder: string;
+  placeholder?: string;
   leftDistance?: number;
   disabled?: boolean;
-  onMenuBtnClick: (e: MouseEvent<HTMLButtonElement>) => void;
+  onMenuBtnClick?: (e: MouseEvent<HTMLButtonElement>) => void;
   children?: ReactNode;
 }
 
