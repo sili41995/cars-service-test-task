@@ -7,8 +7,7 @@ import { FormEvent, useState } from 'react';
 import {
   addDelimiterToInputValue,
   getPriceList,
-  getValidPrice,
-  getValueWithoutDelimiter,
+  getValidFormValues,
   onToggleMenuBtnClick,
 } from 'utils';
 import brands from 'constants/makes.json';
@@ -28,27 +27,24 @@ const Filter = () => {
   const { brandDefaultValue, priceDefaultValue, mileageDefaultValue } =
     useFilterValues();
   const { register, handleSubmit, setValue, watch } = useForm<IFilters>();
+  const brandInputValue = watch(SearchParamsKeys.brand);
+  const priceInputValue = watch(SearchParamsKeys.price);
   const priceList = getPriceList({
     cars,
     step: Number(GeneralParams.priceStep),
   });
-  const brandInputValue = watch(SearchParamsKeys.brand);
-  const priceInputValue = watch(SearchParamsKeys.price);
 
   const onSubmitForm: SubmitHandler<IFilters> = (data) => {
-    const validPrice = getValidPrice(data.price);
-    const validMileageFrom = getValueWithoutDelimiter({
-      value: data.mileageFrom,
-      delimiter: String(GeneralParams.comma),
-    });
-    data.price = validPrice;
-    data.mileageFrom = validMileageFrom;
+    const { price, mileageFrom } = getValidFormValues(data);
+    data.price = price;
+    data.mileageFrom = mileageFrom;
 
     Object.entries(data).forEach(([key, value]: string[]) => {
       updateSearchParams({ key, value: value.toLowerCase() });
-      setShowBrandsList(false);
-      setShowPricesList(false);
     });
+
+    setShowBrandsList(false);
+    setShowPricesList(false);
   };
 
   const onMenuItemClick = ({ e, name }: IOnMenuItemClick) => {
