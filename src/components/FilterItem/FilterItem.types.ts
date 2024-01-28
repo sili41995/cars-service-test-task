@@ -1,4 +1,4 @@
-import { MouseEvent, ReactNode } from 'react';
+import { FormEvent, MouseEvent, ReactNode } from 'react';
 
 export interface IProps {
   title?: string;
@@ -9,8 +9,10 @@ export interface IProps {
   placeholder?: string;
   leftDistance?: number;
   disabled?: boolean;
-  onMenuBtnClick?: (e: MouseEvent<HTMLButtonElement>) => void;
   children?: ReactNode;
+  toggleMenuBtn?: ReactNode;
+  onMenuBtnClick?: (e: MouseEvent<HTMLButtonElement>) => void;
+  onChange?: (e: FormEvent<HTMLInputElement>) => void;
 }
 
 export interface IStyledProps {

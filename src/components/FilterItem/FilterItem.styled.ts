@@ -58,6 +58,14 @@ export const Input = styled.input`
   &[name=${SearchParamsKeys.price}]:not(:placeholder-shown) {
     padding-left: 43px;
   }
+  &[name=${SearchParamsKeys.mileageFrom}] {
+    width: 160px;
+    border-right: 1px solid
+      ${({ theme }) => theme.colors.bordersGroupDelimiterColor};
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    padding-left: 75px;
+  }
   &::placeholder {
     color: currentColor;
   }

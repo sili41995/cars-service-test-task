@@ -1,12 +1,11 @@
-import { GeneralParams, SearchParamsKeys } from 'constants/index';
+import { GeneralParams, IconSizes, SearchParamsKeys } from 'constants/index';
 import useSetSearchParams from 'hooks/useSetSearchParams';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { IFilters, IOnMenuItemClick } from 'types/types';
 import { Form, InputGroup } from './Filter.styled';
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import {
-  addDelimiter,
-  firstSymbolToUpperCase,
+  addDelimiterToInputValue,
   getPriceList,
   getValidPrice,
   getValueWithoutDelimiter,
@@ -18,31 +17,25 @@ import { selectCars } from '../../redux/cars/selectors';
 import SubmitBtn from 'components/SubmitBtn';
 import FilterItem from 'components/FilterItem/FilterItem';
 import FiltersList from 'components/FiltersList';
+import { FaChevronDown } from 'react-icons/fa';
+import { useFilterValues } from 'hooks';
 
 const Filter = () => {
   const [showBrandsList, setShowBrandsList] = useState<boolean>(false);
   const [showPricesList, setShowPricesList] = useState<boolean>(false);
-  const { searchParams, updateSearchParams } = useSetSearchParams();
+  const { updateSearchParams } = useSetSearchParams();
   const cars = useAppSelector(selectCars);
-  const brand = searchParams.get(SearchParamsKeys.brand) ?? '';
-  const price = searchParams.get(SearchParamsKeys.price) ?? '';
-  const mileageFrom = searchParams.get(SearchParamsKeys.mileageFrom) ?? '';
+  const { brandDefaultValue, priceDefaultValue, mileageDefaultValue } =
+    useFilterValues();
   const { register, handleSubmit, setValue, watch } = useForm<IFilters>();
-  const brandInputValue = watch(SearchParamsKeys.brand);
-  const priceInputValue = watch(SearchParamsKeys.price);
-  const mileageDefaultValue = addDelimiter({
-    str: mileageFrom,
-    delimiter: String(GeneralParams.comma),
-    position: Number(GeneralParams.maxNumLength),
-  });
-  const brandDefaultValue = firstSymbolToUpperCase(brand);
-  const priceDefaultValue = `${price}${GeneralParams.dollar}`;
   const priceList = getPriceList({
     cars,
     step: Number(GeneralParams.priceStep),
   });
+  const brandInputValue = watch(SearchParamsKeys.brand);
+  const priceInputValue = watch(SearchParamsKeys.price);
 
-  const onSubmit: SubmitHandler<IFilters> = (data) => {
+  const onSubmitForm: SubmitHandler<IFilters> = (data) => {
     const validPrice = getValidPrice(data.price);
     const validMileageFrom = getValueWithoutDelimiter({
       value: data.mileageFrom,
@@ -63,7 +56,7 @@ const Filter = () => {
 
     switch (name) {
       case SearchParamsKeys.price:
-        value = `${value}${GeneralParams.dollar}`;
+        value = value && `${value}${GeneralParams.dollar}`;
         setShowPricesList(false);
         break;
 
@@ -78,14 +71,28 @@ const Filter = () => {
     setValue(name, value);
   };
 
+  const onMileageInputChange = (e: FormEvent<HTMLInputElement>) => {
+    const value = e.currentTarget.value;
+    const delimiter = String(GeneralParams.comma);
+    const position = Number(GeneralParams.maxNumLength);
+    const updateValue = addDelimiterToInputValue({
+      value,
+      delimiter,
+      position,
+    });
+
+    setValue(SearchParamsKeys.mileageFrom, updateValue);
+  };
+
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
+    <Form onSubmit={handleSubmit(onSubmitForm)}>
       <FilterItem
         inputSettings={{ ...register(SearchParamsKeys.brand) }}
         title='Car brand'
         placeholder='Enter the text'
         defaultValue={brandDefaultValue}
         showMenu={showBrandsList}
+        toggleMenuBtn={<FaChevronDown size={IconSizes.otherSize} />}
         onMenuBtnClick={(e) => {
           onToggleMenuBtnClick({ e, setState: setShowBrandsList });
         }}
@@ -107,6 +114,7 @@ const Filter = () => {
         leftDistance={18}
         defaultValue={priceDefaultValue}
         showMenu={showPricesList}
+        toggleMenuBtn={<FaChevronDown size={IconSizes.otherSize} />}
         onMenuBtnClick={(e) => {
           onToggleMenuBtnClick({ e, setState: setShowPricesList });
         }}
@@ -128,6 +136,8 @@ const Filter = () => {
           title='Сar mileage / km'
           prefix='From'
           defaultValue={mileageDefaultValue}
+          leftDistance={24}
+          onChange={onMileageInputChange}
         />
       </InputGroup>
       <SubmitBtn title='Search' />

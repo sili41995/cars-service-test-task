@@ -8,50 +8,43 @@ import {
 } from './FilterItem.styled';
 import { FC } from 'react';
 import { IProps } from './FilterItem.types';
-import { IconSizes } from 'constants/index';
-import { FaChevronDown } from 'react-icons/fa';
 
 const FilterItem: FC<IProps> = ({
   title = '',
   prefix,
   inputSettings,
-  onMenuBtnClick,
   defaultValue,
   placeholder = '',
   leftDistance,
   disabled = false,
   showMenu,
+  toggleMenuBtn,
   children,
+  onChange,
+  onMenuBtnClick,
 }) => {
-  const input = (
-    <Input
-      {...inputSettings}
-      type='text'
-      placeholder={placeholder}
-      defaultValue={defaultValue}
-      disabled={disabled}
-    />
-  );
-
   return (
     <Label>
       {title && <Title>{title}</Title>}
-      {children ? (
-        <InputWrap>
-          {prefix && <Prefix leftDistance={leftDistance}>{prefix}</Prefix>}
-          {input}
-          <ToggleMenuBtn
-            type='button'
-            onClick={onMenuBtnClick}
-            showFiltersList={Boolean(showMenu)}
-          >
-            <FaChevronDown size={IconSizes.otherSize} />
-          </ToggleMenuBtn>
-          {showMenu && children}
-        </InputWrap>
-      ) : (
-        input
-      )}
+      <InputWrap>
+        {prefix && <Prefix leftDistance={leftDistance}>{prefix}</Prefix>}
+        <Input
+          {...inputSettings}
+          type='text'
+          placeholder={placeholder}
+          defaultValue={defaultValue}
+          disabled={disabled}
+          onChange={onChange}
+        />
+        <ToggleMenuBtn
+          type='button'
+          onClick={onMenuBtnClick}
+          showFiltersList={Boolean(showMenu)}
+        >
+          {toggleMenuBtn}
+        </ToggleMenuBtn>
+        {showMenu && children}
+      </InputWrap>
     </Label>
   );
 };
