@@ -24,25 +24,6 @@ const CatalogPage: FC = () => {
   const shouldShowControls = Boolean(cars?.length) && count;
   const shouldShowLoader = isLoading && !cars;
 
-  // const filteredCars = useMemo(() => {
-  //   if (!cars) {
-  //     return cars;
-  //   }
-
-  //   const filteredCarsByBrand = filterCarsByBrand({ cars, filter: brand });
-  //   const filteredCarsByPrice = filterCarsByPrice({
-  //     cars: filteredCarsByBrand,
-  //     filter: price,
-  //   });
-  //   const filteredCarsByMileage = filterCarsByMileage({
-  //     cars: filteredCarsByPrice,
-  //     mileageFrom,
-  //     mileageTo,
-  //   });
-
-  //   return filteredCarsByMileage;
-  // }, [brand, cars, mileageFrom, mileageTo, price]);
-
   const filteredCarsByBrand = useMemo(
     () => cars && filterCarsByBrand({ cars, filter: brand }),
     [brand, cars]
