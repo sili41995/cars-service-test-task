@@ -8,4 +8,7 @@ export const Form = styled.form`
   margin-bottom: 50px;
 `;
 
-export const InputGroup = styled.div``;
+export const InputGroup = styled.div`
+  display: flex;
+  align-items: flex-end;
+`;

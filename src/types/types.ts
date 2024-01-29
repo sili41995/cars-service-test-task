@@ -86,6 +86,7 @@ export interface IFilters {
   brand: string;
   price: string;
   mileageFrom: string;
+  mileageTo: string;
 }
 
 export interface IFilteredCarsProps {

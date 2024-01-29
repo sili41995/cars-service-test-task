@@ -7,21 +7,25 @@ const useFilterValues = () => {
   const brand = searchParams.get(SearchParamsKeys.brand) ?? '';
   const price = searchParams.get(SearchParamsKeys.price) ?? '';
   const mileageFrom = searchParams.get(SearchParamsKeys.mileageFrom) ?? '';
+  const mileageTo = searchParams.get(SearchParamsKeys.mileageTo) ?? '';
   const brandDefaultValue = firstSymbolToUpperCase(brand);
   const priceDefaultValue = price && `${price}${GeneralParams.dollar}`;
-  const mileageDefaultValue = addDelimiter({
+  const mileageFromDefaultValue = addDelimiter({
     str: mileageFrom,
+    delimiter: String(GeneralParams.comma),
+    position: Number(GeneralParams.maxNumLength),
+  });
+  const mileageToDefaultValue = addDelimiter({
+    str: mileageTo,
     delimiter: String(GeneralParams.comma),
     position: Number(GeneralParams.maxNumLength),
   });
 
   return {
-    brand,
-    price,
-    mileageFrom,
     brandDefaultValue,
     priceDefaultValue,
-    mileageDefaultValue,
+    mileageFromDefaultValue,
+    mileageToDefaultValue,
   };
 };
 

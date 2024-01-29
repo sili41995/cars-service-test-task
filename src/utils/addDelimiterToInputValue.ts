@@ -33,7 +33,7 @@ const addDelimiterToInputValue = ({
     return symbols.reverse().join(GeneralParams.emptyStr);
   }
 
-  return value;
+  return value.split(delimiter).join(GeneralParams.emptyStr);
 };
 
 export default addDelimiterToInputValue;

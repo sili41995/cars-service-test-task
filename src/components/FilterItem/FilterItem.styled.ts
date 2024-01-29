@@ -58,13 +58,20 @@ export const Input = styled.input`
   &[name=${SearchParamsKeys.price}]:not(:placeholder-shown) {
     padding-left: 43px;
   }
-  &[name=${SearchParamsKeys.mileageFrom}] {
+  &[name=${SearchParamsKeys.mileageFrom}], &[name=${SearchParamsKeys.mileageTo}] {
     width: 160px;
+  }
+  &[name=${SearchParamsKeys.mileageFrom}] {
     border-right: 1px solid
       ${({ theme }) => theme.colors.bordersGroupDelimiterColor};
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     padding-left: 75px;
+  }
+  &[name=${SearchParamsKeys.mileageTo}] {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    padding-left: 53px;
   }
   &::placeholder {
     color: currentColor;

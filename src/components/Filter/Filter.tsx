@@ -24,8 +24,12 @@ const Filter = () => {
   const [showPricesList, setShowPricesList] = useState<boolean>(false);
   const { updateSearchParams } = useSetSearchParams();
   const cars = useAppSelector(selectCars);
-  const { brandDefaultValue, priceDefaultValue, mileageDefaultValue } =
-    useFilterValues();
+  const {
+    brandDefaultValue,
+    priceDefaultValue,
+    mileageFromDefaultValue,
+    mileageToDefaultValue,
+  } = useFilterValues();
   const { register, handleSubmit, setValue, watch } = useForm<IFilters>();
   const brandInputValue = watch(SearchParamsKeys.brand);
   const priceInputValue = watch(SearchParamsKeys.price);
@@ -76,8 +80,16 @@ const Filter = () => {
       delimiter,
       position,
     });
+    const mileageFromInputName = SearchParamsKeys.mileageFrom;
+    const mileageToInputName = SearchParamsKeys.mileageTo;
 
-    setValue(SearchParamsKeys.mileageFrom, updateValue);
+    if (e.currentTarget.name === mileageFromInputName) {
+      setValue(mileageFromInputName, updateValue);
+    }
+
+    if (e.currentTarget.name === mileageToInputName) {
+      setValue(mileageToInputName, updateValue);
+    }
   };
 
   return (
@@ -131,7 +143,14 @@ const Filter = () => {
           inputSettings={{ ...register(SearchParamsKeys.mileageFrom) }}
           title='Сar mileage / km'
           prefix='From'
-          defaultValue={mileageDefaultValue}
+          defaultValue={mileageFromDefaultValue}
+          leftDistance={24}
+          onChange={onMileageInputChange}
+        />
+        <FilterItem
+          inputSettings={{ ...register(SearchParamsKeys.mileageTo) }}
+          prefix='To'
+          defaultValue={mileageToDefaultValue}
           leftDistance={24}
           onChange={onMileageInputChange}
         />
