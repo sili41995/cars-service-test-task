@@ -39,9 +39,10 @@ const Filter = () => {
   });
 
   const onSubmitForm: SubmitHandler<IFilters> = (data) => {
-    const { price, mileageFrom } = getValidFormValues(data);
+    const { price, mileageFrom, mileageTo } = getValidFormValues(data);
     data.price = price;
     data.mileageFrom = mileageFrom;
+    data.mileageTo = mileageTo;
 
     Object.entries(data).forEach(([key, value]: string[]) => {
       updateSearchParams({ key, value: value.toLowerCase() });

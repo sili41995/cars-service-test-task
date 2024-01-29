@@ -22,6 +22,10 @@ const useFilterValues = () => {
   });
 
   return {
+    brand,
+    price,
+    mileageFrom,
+    mileageTo,
     brandDefaultValue,
     priceDefaultValue,
     mileageFromDefaultValue,

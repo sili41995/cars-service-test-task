@@ -9,8 +9,12 @@ const getValidFormValues = (formData: IFilters): IFilters => {
     value: formData.mileageFrom,
     delimiter: String(GeneralParams.comma),
   });
+  const mileageTo = getValueWithoutDelimiter({
+    value: formData.mileageTo,
+    delimiter: String(GeneralParams.comma),
+  });
 
-  return { ...formData, price, mileageFrom };
+  return { ...formData, price, mileageFrom, mileageTo };
 };
 
 export default getValidFormValues;

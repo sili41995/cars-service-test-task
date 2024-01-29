@@ -113,3 +113,9 @@ export interface IGetValueWithoutDelimiterProps {
   value: string;
   delimiter: string;
 }
+
+export interface IFilterCarsByMileageProps {
+  cars: ICar[];
+  mileageFrom: string;
+  mileageTo: string;
+}

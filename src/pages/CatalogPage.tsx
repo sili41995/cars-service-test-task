@@ -1,45 +1,73 @@
-import { useAppDispatch, useAppSelector } from 'hooks/redux';
+import { useAppDispatch } from 'hooks/redux';
 import { FC, useEffect, useMemo } from 'react';
 import { fetchCars } from '../redux/cars/operations';
-import { filterCarsByBrand, filterCarsByPrice, toasts } from 'utils';
 import {
-  selectCars,
-  selectCount,
-  selectIsLoading,
-} from '../redux/cars/selectors';
+  filterCarsByBrand,
+  filterCarsByMileage,
+  filterCarsByPrice,
+  toasts,
+} from 'utils';
 import CarsList from 'components/CarsList';
-import { useSearchParams } from 'react-router-dom';
 import { FetchParams, Messages, SearchParamsKeys } from 'constants/index';
 import DefaultMessage from 'components/DefaultMessage';
 import Filter from 'components/Filter';
 import PaginationBar from 'components/PaginationBar';
 import Loader from 'components/Loader';
+import { useFilterValues, useGlobalState, useSetSearchParams } from 'hooks';
 
 const CatalogPage: FC = () => {
-  const [searchParams] = useSearchParams();
   const dispatch = useAppDispatch();
-  const cars = useAppSelector(selectCars);
-  const count = useAppSelector(selectCount);
-  const isLoading = useAppSelector(selectIsLoading);
+  const { searchParams } = useSetSearchParams();
+  const { brand, price, mileageFrom, mileageTo } = useFilterValues();
+  const { cars, count, isLoading } = useGlobalState();
   const page = searchParams.get(SearchParamsKeys.page) ?? '1';
-  const brand = searchParams.get(SearchParamsKeys.brand) ?? '';
-  const price = searchParams.get(SearchParamsKeys.price) ?? '';
   const shouldShowControls = Boolean(cars?.length) && count;
   const shouldShowLoader = isLoading && !cars;
 
-  const filteredCars = useMemo(() => {
-    if (!cars) {
-      return;
-    }
+  // const filteredCars = useMemo(() => {
+  //   if (!cars) {
+  //     return cars;
+  //   }
 
-    const filteredCarsByBrand = filterCarsByBrand({ cars, filter: brand });
-    const filteredCarsByPrice = filterCarsByPrice({
-      cars: filteredCarsByBrand,
-      filter: price,
-    });
+  //   const filteredCarsByBrand = filterCarsByBrand({ cars, filter: brand });
+  //   const filteredCarsByPrice = filterCarsByPrice({
+  //     cars: filteredCarsByBrand,
+  //     filter: price,
+  //   });
+  //   const filteredCarsByMileage = filterCarsByMileage({
+  //     cars: filteredCarsByPrice,
+  //     mileageFrom,
+  //     mileageTo,
+  //   });
 
-    return filteredCarsByPrice;
-  }, [brand, cars, price]);
+  //   return filteredCarsByMileage;
+  // }, [brand, cars, mileageFrom, mileageTo, price]);
+
+  const filteredCarsByBrand = useMemo(
+    () => cars && filterCarsByBrand({ cars, filter: brand }),
+    [brand, cars]
+  );
+
+  const filteredCarsByPrice = useMemo(
+    () =>
+      filteredCarsByBrand &&
+      filterCarsByPrice({
+        cars: filteredCarsByBrand,
+        filter: price,
+      }),
+    [filteredCarsByBrand, price]
+  );
+
+  const filteredCars = useMemo(
+    () =>
+      filteredCarsByPrice &&
+      filterCarsByMileage({
+        cars: filteredCarsByPrice,
+        mileageFrom,
+        mileageTo,
+      }),
+    [filteredCarsByPrice, mileageFrom, mileageTo]
+  );
 
   useEffect(() => {
     const pageNumber = Number.parseInt(page);

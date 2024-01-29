@@ -23,3 +23,4 @@ export { default as setBtnDisplayProp } from './setBtnDisplayProp';
 export { default as getValueWithoutDelimiter } from './getValueWithoutDelimiter';
 export { default as addDelimiterToInputValue } from './addDelimiterToInputValue';
 export { default as getValidFormValues } from './getValidFormValues';
+export { default as filterCarsByMileage } from './filterCarsByMileage';
