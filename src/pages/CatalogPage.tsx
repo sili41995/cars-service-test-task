@@ -1,54 +1,23 @@
 import { useAppDispatch } from 'hooks/redux';
-import { FC, useEffect, useMemo } from 'react';
+import { FC, useEffect } from 'react';
 import { fetchCars } from '../redux/cars/operations';
-import {
-  filterCarsByBrand,
-  filterCarsByMileage,
-  filterCarsByPrice,
-  toasts,
-} from 'utils';
+import { toasts } from 'utils';
 import CarsList from 'components/CarsList';
 import { FetchParams, Messages, SearchParamsKeys } from 'constants/index';
 import DefaultMessage from 'components/DefaultMessage';
 import Filter from 'components/Filter';
 import PaginationBar from 'components/PaginationBar';
 import Loader from 'components/Loader';
-import { useFilterValues, useGlobalState, useSetSearchParams } from 'hooks';
+import { useFilteredCars, useGlobalState, useSetSearchParams } from 'hooks';
 
 const CatalogPage: FC = () => {
   const dispatch = useAppDispatch();
   const { searchParams } = useSetSearchParams();
-  const { brand, price, mileageFrom, mileageTo } = useFilterValues();
   const { cars, count, isLoading } = useGlobalState();
+  const filteredCars = useFilteredCars();
   const page = searchParams.get(SearchParamsKeys.page) ?? '1';
   const shouldShowControls = Boolean(cars?.length) && count;
   const shouldShowLoader = isLoading && !cars;
-
-  const filteredCarsByBrand = useMemo(
-    () => cars && filterCarsByBrand({ cars, filter: brand }),
-    [brand, cars]
-  );
-
-  const filteredCarsByPrice = useMemo(
-    () =>
-      filteredCarsByBrand &&
-      filterCarsByPrice({
-        cars: filteredCarsByBrand,
-        filter: price,
-      }),
-    [filteredCarsByBrand, price]
-  );
-
-  const filteredCars = useMemo(
-    () =>
-      filteredCarsByPrice &&
-      filterCarsByMileage({
-        cars: filteredCarsByPrice,
-        mileageFrom,
-        mileageTo,
-      }),
-    [filteredCarsByPrice, mileageFrom, mileageTo]
-  );
 
   useEffect(() => {
     const pageNumber = Number.parseInt(page);
