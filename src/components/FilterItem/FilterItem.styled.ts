@@ -31,6 +31,9 @@ export const Prefix = styled.p<IStyledProps>`
   font-size: 18px;
   font-weight: ${({ theme }) => theme.fontWeight.secondaryFontWeight};
   line-height: 1.11;
+  &:is(:hover, :focus) + input:not(:disabled) {
+    border-color: ${({ theme }) => theme.colors.primaryColor};
+  }
 `;
 
 export const Input = styled.input`
