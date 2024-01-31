@@ -12,7 +12,7 @@ export const Label = styled.label`
 export const Title = styled.span`
   color: #8a8a89;
   font-family: ${({ theme }) => theme.fontFamily.primaryFontFamily};
-  font-size: 14px;
+  font-size: ${({ theme }) => theme.fontSize.secondaryFontSize}px;
   font-weight: ${({ theme }) => theme.fontWeight.secondaryFontWeight};
   line-height: 1.29;
 `;
@@ -26,11 +26,11 @@ export const Prefix = styled.p<IStyledProps>`
   top: 50%;
   left: ${({ leftDistance }) => leftDistance}px;
   transform: translateY(-50%);
-  color: #121417;
+  color: ${({ theme }) => theme.colors.primaryFontColor};
   font-family: ${({ theme }) => theme.fontFamily.primaryFontFamily};
-  font-size: 18px;
+  font-size: ${({ theme }) => theme.fontSize.primaryFontSize}px;
   font-weight: ${({ theme }) => theme.fontWeight.secondaryFontWeight};
-  line-height: 1.11;
+  line-height: ${({ theme }) => theme.lineHeight.otherLineHeight};
   &:is(:hover, :focus) + input:not(:disabled) {
     border-color: ${({ theme }) => theme.colors.primaryColor};
   }
@@ -39,27 +39,27 @@ export const Prefix = styled.p<IStyledProps>`
 export const Input = styled.input`
   height: 48px;
   outline: none;
-  border-radius: 14px;
+  border-radius: ${({ theme }) => theme.borderRadius.primaryBorderRadius}px;
   background-color: #f7f7fb;
-  padding: 14px;
-  border: 2px solid;
+  padding: ${({ theme }) => theme.spacing(3)};
+  border: ${({ theme }) => theme.border.secondaryBorder};
   border-color: transparent;
-  color: #121417;
+  color: ${({ theme }) => theme.colors.primaryFontColor};
   font-family: ${({ theme }) => theme.fontFamily.primaryFontFamily};
-  font-size: 18px;
+  font-size: ${({ theme }) => theme.fontSize.primaryFontSize}px;
   font-weight: ${({ theme }) => theme.fontWeight.secondaryFontWeight};
-  line-height: 1.11;
+  line-height: ${({ theme }) => theme.lineHeight.otherLineHeight};
   transition: border-color ${({ theme }) => theme.transitionDurationAndFunc};
   &[name=${SearchParamsKeys.brand}] {
     width: 224px;
-    padding-left: 18px;
+    padding-left: ${({ theme }) => theme.spacing(4)};
   }
   &[name=${SearchParamsKeys.price}] {
     width: 125px;
-    padding-left: 47px;
+    ${({ theme }) => theme.spacing(12)};
   }
   &[name=${SearchParamsKeys.price}]:not(:placeholder-shown) {
-    padding-left: 43px;
+    padding-left: ${({ theme }) => theme.spacing(11)};
   }
   &[name=${SearchParamsKeys.mileageFrom}], &[name=${SearchParamsKeys.mileageTo}] {
     width: 160px;
@@ -69,12 +69,12 @@ export const Input = styled.input`
       ${({ theme }) => theme.colors.bordersGroupDelimiterColor};
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
-    padding-left: 75px;
+    padding-left: ${({ theme }) => theme.spacing(19)};
   }
   &[name=${SearchParamsKeys.mileageTo}] {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
-    padding-left: 53px;
+    padding-left: ${({ theme }) => theme.spacing(13)};
   }
   &::placeholder {
     color: currentColor;
@@ -100,7 +100,7 @@ export const ToggleMenuBtn = styled.button<IStyledProps>`
   }
   & svg {
     display: block;
-    color: #121417;
+    color: ${({ theme }) => theme.colors.primaryFontColor};
     transition: color ${({ theme }) => theme.transitionDurationAndFunc};
   }
 `;

@@ -12,12 +12,12 @@ export const ListItem = styled.li`
     display: block;
     width: 100px;
     padding: ${({ theme }) => theme.spacing(3)};
-    border-radius: ${({ theme }) => theme.borderRadius.primaryBorderRadius}px;
-    border: 1px solid;
+    border-radius: ${({ theme }) => theme.borderRadius.otherBorderRadius}px;
+    border: ${({ theme }) => theme.border.primaryBorder};
     border-color: ${({ theme }) => theme.colors.whiteColor};
     color: ${({ theme }) => theme.colors.whiteColor};
-    font-family: Inter;
-    font-size: ${({ theme }) => theme.fontSize.primaryFontSize}px;
+    font-family: ${({ theme }) => theme.fontFamily.primaryFontFamily};
+    font-size: ${({ theme }) => theme.fontSize.titleFontSize}px;
     font-weight: ${({ theme }) => theme.fontWeight.secondaryFontWeight};
     text-align: center;
     transition: color ${({ theme }) => theme.transitionDurationAndFunc},

@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 
 export const Message = styled.p`
-  color: #121417;
+  color: ${({ theme }) => theme.colors.primaryFontColor};
   font-family: ${({ theme }) => theme.fontFamily.primaryFontFamily};
-  font-size: 18px;
+  font-size: ${({ theme }) => theme.fontSize.primaryFontSize}px;
   font-weight: ${({ theme }) => theme.fontWeight.otherFontWeight};
 `;

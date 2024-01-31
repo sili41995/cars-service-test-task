@@ -67,7 +67,7 @@ const CarsListItem: FC<IProps> = ({ car }) => {
           </ImgWrap>
           <TitleWrap>
             <CarTitle
-              fontSize={theme.fontSize.primaryFontSize}
+              fontSize={theme.fontSize.titleFontSize}
               make={make}
               model={model}
               year={year}

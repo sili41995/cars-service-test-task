@@ -16,8 +16,7 @@ export const Item = styled.li<IStyledProps>`
 export const TemplateItem = styled.li`
   & button {
     cursor: default;
-    &:hover,
-    &:focus {
+    &:is(:hover, :focus) {
       box-shadow: none;
     }
   }
@@ -29,19 +28,16 @@ export const Button = styled.button`
   padding: ${({ theme }) => theme.spacing(2)};
   background-color: transparent;
   border-color: transparent;
-  border-radius: ${({ theme }) =>
-    `${theme.borderRadius.primaryBorderRadius}px`};
+  border-radius: ${({ theme }) => `${theme.borderRadius.otherBorderRadius}px`};
   color: ${({ theme }) => theme.colors.primaryFontColor};
   font-family: ${({ theme }) => theme.fontFamily.primaryFontFamily};
-  font-size: ${({ theme }) => `${theme.fontSize.primaryFontSize}px`};
+  font-size: ${({ theme }) => `${theme.fontSize.titleFontSize}px`};
   font-weight: ${({ theme }) => theme.fontWeight.secondaryFontWeight};
   transition: box-shadow ${({ theme }) => theme.transitionDurationAndFunc};
   &.active {
     background-color: ${({ theme }) => theme.colors.otherColor};
   }
-  &:hover,
-  &:focus,
-  &:active {
+  &:is(:hover, :focus, :active) {
     outline: none;
     box-shadow: ${({ theme }) => theme.shadows.primaryShadow};
   }

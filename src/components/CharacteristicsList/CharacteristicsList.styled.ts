@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const List = styled.ul`
   display: flex;
-  gap: 5px;
+  gap: ${({ theme }) => theme.spacing()};
 `;
 
 export const Item = styled.li`
@@ -20,11 +20,11 @@ export const Item = styled.li`
 export const Text = styled.p`
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: ${({ theme }) => theme.spacing()};
   color: ${({ theme }) => theme.colors.characteristicsTextColor};
   font-family: ${({ theme }) => theme.fontFamily.primaryFontFamily};
-  font-size: 12px;
+  font-size: ${({ theme }) => theme.fontSize.otherFontSize}px;
   font-weight: ${({ theme }) => theme.fontWeight.primaryFontWeight};
-  line-height: 1.5;
+  line-height: ${({ theme }) => theme.lineHeight.secondaryLineHeight};
   white-space: nowrap;
 `;

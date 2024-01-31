@@ -17,8 +17,8 @@ export const List = styled.ul<IStyledProps>`
     `${theme.spacing(3.5)} ${theme.spacing(2)} ${theme.spacing(
       3.5
     )} ${theme.spacing(4.5)}`};
-  border-radius: 14px;
-  border: 1px solid rgba(18, 20, 23, 0.05);
+  border-radius: ${({ theme }) => theme.borderRadius.primaryBorderRadius}px;
+  ${({ theme }) => theme.border.primaryBorder} rgba(18, 20, 23, 0.05);
   background-color: ${({ theme }) => theme.colors.whiteColor};
   box-shadow: 0px 4px 36px 0px rgba(0, 0, 0, 0.02);
   overflow: auto;
@@ -35,11 +35,11 @@ export const Label = styled.label`
 export const Title = styled.span`
   color: rgba(18, 20, 23, 0.2);
   font-family: ${({ theme }) => theme.fontFamily.primaryFontFamily};
-  font-size: 16px;
+  font-size: ${({ theme }) => theme.fontSize.titleFontSize}px;
   font-weight: ${({ theme }) => theme.fontWeight.secondaryFontWeight};
-  line-height: 1.25;
+  line-height: ${({ theme }) => theme.lineHeight.otherLineHeight};
   &.active {
-    color: #121417;
+    color: ${({ theme }) => theme.colors.primaryFontColor};
   }
 `;
 

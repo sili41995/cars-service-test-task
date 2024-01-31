@@ -36,7 +36,7 @@ export const CloseBtn = styled.button`
   }
   & svg {
     display: block;
-    color: #121417;
+    color: ${({ theme }) => theme.colors.primaryFontColor};
     transition: color ${({ theme }) => theme.transitionDurationAndFunc};
   }
 `;

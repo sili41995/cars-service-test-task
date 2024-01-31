@@ -25,7 +25,7 @@ const CarDetails: FC<IProps> = ({ car }) => {
         <Image src={carImg} alt={carImgDesc} />
       </ImgWrap>
       <CarTitle
-        fontSize={theme.fontSize.secondaryFontSize}
+        fontSize={theme.fontSize.primaryFontSize}
         make={make}
         model={model}
         year={year}

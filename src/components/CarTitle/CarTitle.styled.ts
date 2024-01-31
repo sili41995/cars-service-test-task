@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { IStyledProps } from './CarTitle.types';
 
 export const Title = styled.p<IStyledProps>`
-  color: #121417;
+  color: ${({ theme }) => theme.colors.primaryFontColor};
   font-family: ${({ theme }) => theme.fontFamily.primaryFontFamily};
   font-size: ${({ fontSize }) => `${fontSize}px`};
   font-weight: ${({ theme }) => theme.fontWeight.secondaryFontWeight};

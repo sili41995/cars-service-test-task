@@ -1,7 +1,6 @@
 import { Global, css } from '@emotion/react';
 import 'modern-normalize';
 import {
-  interMedium,
   manropeMedium,
   manropeRegular,
   manropeSemiBold,
@@ -10,43 +9,43 @@ import {
 } from 'fonts';
 import { FC } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
+import { FontFamilyNames } from 'constants/index';
 
 const GlobalStyles: FC = () => (
   <Global
     styles={css`
       @font-face {
-        font-family: 'Inter';
-        src: local('Inter'), url(${interMedium}) format('truetype');
+        font-family: ${FontFamilyNames.manrope};
+        src: local(${FontFamilyNames.manrope}),
+          url(${manropeMedium}) format('truetype');
         font-weight: 500;
       }
 
       @font-face {
-        font-family: 'Manrope';
-        src: local('Manrope'), url(${manropeMedium}) format('truetype');
-        font-weight: 500;
-      }
-
-      @font-face {
-        font-family: 'Manrope';
-        src: local('Manrope'), url(${manropeRegular}) format('truetype');
+        font-family: ${FontFamilyNames.manrope};
+        src: local(${FontFamilyNames.manrope}),
+          url(${manropeRegular}) format('truetype');
         font-weight: 400;
       }
 
       @font-face {
-        font-family: 'Manrope';
-        src: local('Manrope'), url(${manropeSemiBold}) format('truetype');
+        font-family: ${FontFamilyNames.manrope};
+        src: local(${FontFamilyNames.manrope}),
+          url(${manropeSemiBold}) format('truetype');
         font-weight: 600;
       }
 
       @font-face {
-        font-family: 'Montserrat';
-        src: local('Montserrat'), url(${montserratRegular}) format('truetype');
+        font-family: ${FontFamilyNames.montserrat};
+        src: local(${FontFamilyNames.montserrat}),
+          url(${montserratRegular}) format('truetype');
         font-weight: 400;
       }
 
       @font-face {
-        font-family: 'Montserrat';
-        src: local('Montserrat'), url(${montserratSemiBold}) format('truetype');
+        font-family: ${FontFamilyNames.montserrat};
+        src: local(${FontFamilyNames.montserrat}),
+          url(${montserratSemiBold}) format('truetype');
         font-weight: 600;
       }
 

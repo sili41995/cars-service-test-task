@@ -14,7 +14,7 @@ import brands from 'constants/makes.json';
 import { useAppSelector } from 'hooks/redux';
 import { selectCars } from '../../redux/cars/selectors';
 import SubmitBtn from 'components/SubmitBtn';
-import FilterItem from 'components/FilterItem/FilterItem';
+import FilterItem from 'components/FilterItem';
 import FiltersList from 'components/FiltersList';
 import { FaChevronDown } from 'react-icons/fa';
 import { useFilterValues } from 'hooks';
