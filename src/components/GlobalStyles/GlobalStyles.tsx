@@ -1,5 +1,7 @@
+import { FC } from 'react';
 import { Global, css } from '@emotion/react';
 import 'modern-normalize';
+import 'react-toastify/dist/ReactToastify.css';
 import {
   manropeMedium,
   manropeRegular,
@@ -7,8 +9,6 @@ import {
   montserratRegular,
   montserratSemiBold,
 } from 'fonts';
-import { FC } from 'react';
-import 'react-toastify/dist/ReactToastify.css';
 import { FontFamilyNames } from 'constants/index';
 
 const GlobalStyles: FC = () => (

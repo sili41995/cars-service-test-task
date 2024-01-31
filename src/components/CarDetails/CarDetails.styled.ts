@@ -13,9 +13,7 @@ export const ImgWrap = styled.div`
   }
 `;
 
-export const Image = styled.img`
-  height: auto;
-`;
+export const Image = styled.img``;
 
 export const Description = styled.p`
   color: ${({ theme }) => theme.colors.primaryFontColor};
