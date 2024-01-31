@@ -56,7 +56,7 @@ export const Input = styled.input`
   }
   &[name=${SearchParamsKeys.price}] {
     width: 125px;
-    ${({ theme }) => theme.spacing(12)};
+    padding-left: ${({ theme }) => theme.spacing(12)};
   }
   &[name=${SearchParamsKeys.price}]:not(:placeholder-shown) {
     padding-left: ${({ theme }) => theme.spacing(11)};
