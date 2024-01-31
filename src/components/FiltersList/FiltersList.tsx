@@ -12,22 +12,23 @@ const FiltersList: FC<IProps> = ({ filters, action, currentValue, name }) => (
         <Input type='radio' value='' name={name} onClick={action} />
       </Label>
     </Item>
-    {filters.map((item, index) => {
-      const inputValue =
-        name === SearchParamsKeys.price
-          ? getValidPrice(currentValue)
-          : currentValue;
-      const isActive = inputValue.toLowerCase() === item.toLowerCase();
+    {filters &&
+      filters.map((item, index) => {
+        const inputValue =
+          name === SearchParamsKeys.price
+            ? getValidPrice(currentValue)
+            : currentValue;
+        const isActive = inputValue.toLowerCase() === item.toLowerCase();
 
-      return (
-        <Item key={index}>
-          <Label>
-            <Title className={isActive ? 'active' : ''}>{item}</Title>
-            <Input type='radio' value={item} name={name} onClick={action} />
-          </Label>
-        </Item>
-      );
-    })}
+        return (
+          <Item key={index}>
+            <Label>
+              <Title className={isActive ? 'active' : ''}>{item}</Title>
+              <Input type='radio' value={item} name={name} onClick={action} />
+            </Label>
+          </Item>
+        );
+      })}
   </List>
 );
 

@@ -6,11 +6,11 @@ import { Form, InputGroup } from './Filter.styled';
 import { FormEvent, useState } from 'react';
 import {
   addDelimiterToInputValue,
+  getMakes,
   getPriceList,
   getValidFormValues,
   onToggleMenuBtnClick,
 } from 'utils';
-import brands from 'constants/makes.json';
 import { useAppSelector } from 'hooks/redux';
 import { selectCars } from '../../redux/cars/selectors';
 import SubmitBtn from 'components/SubmitBtn';
@@ -33,6 +33,7 @@ const Filter = () => {
   const { register, handleSubmit, setValue, watch } = useForm<IFilters>();
   const brandInputValue = watch(SearchParamsKeys.brand);
   const priceInputValue = watch(SearchParamsKeys.price);
+  const makes = getMakes(cars);
   const priceList = getPriceList({
     cars,
     step: Number(GeneralParams.priceStep),
@@ -107,7 +108,7 @@ const Filter = () => {
         }}
       >
         <FiltersList
-          filters={brands}
+          filters={makes}
           name={SearchParamsKeys.brand}
           action={(e) => {
             onMenuItemClick({ e, name: SearchParamsKeys.brand });

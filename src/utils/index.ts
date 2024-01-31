@@ -24,3 +24,4 @@ export { default as getValueWithoutDelimiter } from './getValueWithoutDelimiter'
 export { default as addDelimiterToInputValue } from './addDelimiterToInputValue';
 export { default as getValidFormValues } from './getValidFormValues';
 export { default as filterCarsByMileage } from './filterCarsByMileage';
+export { default as getMakes } from './getMakes';

@@ -1,7 +1,7 @@
 import { MouseEvent } from 'react';
 
 export interface IProps {
-  filters: string[];
+  filters: string[] | null;
   action: (e: MouseEvent<HTMLInputElement>) => void;
   currentValue: string;
   name: string;
