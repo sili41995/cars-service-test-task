@@ -73,6 +73,14 @@ const Filter = () => {
     setValue(name, value);
   };
 
+  const onBrandInputChange = (e: FormEvent<HTMLInputElement>) => {
+    if (e.currentTarget.value) {
+      setShowBrandsList(true);
+    } else {
+      setShowBrandsList(false);
+    }
+  };
+
   const onMileageInputChange = (e: FormEvent<HTMLInputElement>) => {
     const value = e.currentTarget.value;
     const delimiter = String(GeneralParams.comma);
@@ -103,6 +111,7 @@ const Filter = () => {
         defaultValue={brandDefaultValue}
         showMenu={showBrandsList}
         toggleMenuBtn={<FaChevronDown size={IconSizes.otherSize} />}
+        onChange={onBrandInputChange}
         onMenuBtnClick={(e) => {
           onToggleMenuBtnClick({ e, setState: setShowBrandsList });
         }}
